@@ -185,6 +185,46 @@ font-size: 20px;
             text-align: justify;
             padding-left: 30px;
         }
+@media (max-width: 768px) {
+    .container2 {
+        flex-direction: column; /* Stack sections vertically */
+    }
+
+    .leftside,
+    .rightside {
+        width: 100%; /* Each section takes full width */
+        text-align: center;
+    }
+
+    .jaundicetext {
+        padding: 15px;
+        font-size: 14px; /* Adjust text size for smaller screens */
+    }
+
+    .mainbutton {
+        font-size: 16px;
+        padding: 8px 16px; /* Reduce padding for smaller screens */
+    }
+
+    .rightside img {
+        max-height: 50vh; /* Adjust image height for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .jaundicetext {
+        font-size: 12px; /* Further reduce font size for very small screens */
+    }
+
+    .mainbutton {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .rightside img {
+        max-height: 40vh; /* Adjust image size for very small screens */
+    }
+}
     .container3{
         height: 100vh;
         background-color: white;
@@ -248,6 +288,55 @@ span.text{
     font-weight: 400;
     line-height: 0;
 }
+@media (max-width: 768px) {
+    .container3 h1 {
+        font-size: 2em;
+    }
+
+    .container3 p {
+        font-size: 16px;
+    }
+
+    .wrapper {
+        gap: 15px;
+    }
+
+    .container4 {
+        width: 240px;
+        height: 160px;
+    }
+
+    span.num {
+        font-size: 2em;
+    }
+
+    span.text {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container3 h1 {
+        font-size: 1.8em;
+    }
+
+    .container3 p {
+        font-size: 14px;
+    }
+
+    .container4 {
+        width: 200px;
+        height: 140px;
+    }
+
+    span.num {
+        font-size: 1.8em;
+    }
+
+    span.text {
+        font-size: 0.8em;
+    }
+}
 .container5{
     width: 100%;
     height: 45vh;
@@ -304,6 +393,57 @@ span.text{
     font-weight: 500;
     margin: 2px 0 12px 0;
 }
+@media (max-width: 768px) {
+    #Our\ team {
+        font-size: 2em;
+    }
+
+    .container5 {
+        gap: 15px;
+    }
+
+    .profile-card {
+        width: 180px;
+        height: 250px;
+    }
+
+    .profile-card .img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .caption h3 {
+        font-size: 16px;
+    }
+
+    .caption p {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .Ourteam {
+        font-size: 1.8em;
+    }
+
+    .profile-card {
+        width: 160px;
+        height: 220px;
+    }
+
+    .profile-card .img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .caption h3 {
+        font-size: 14px;
+    }
+
+    .caption p {
+        font-size: 12px;
+    }
+}
 .container6{
     background-color: #fff;
     height: 50vh;
@@ -350,6 +490,15 @@ span.text{
 #result-text {
     font-weight: bold;
     color: #008000;
+}
+@media (max-width: 768px) {
+    .container6 {
+        flex-direction: column;
+    }
+
+    .bilirubin-checker {
+        max-width: 100%;
+    }
 }
 .container9 {
     width: auto;
@@ -438,6 +587,19 @@ button.prev {
 button.next {
     right: 10px;
 }
+@media (max-width: 768px) {
+    .slider-images img {
+        min-width: 50%; /* Show fewer images for smaller screens */
+    }
+
+    .slider {
+        width: 100%;
+    }
+
+    .slider-title {
+        font-size: 1.5rem;
+    }
+}
   .contact-us-page {
     display: flex;
     width: 100%;
@@ -521,5 +683,56 @@ button.next {
   .contact-right button:hover {
     background-color: #800101;
   }
+@media (max-width: 768px) {
+    .contact-us-page {
+        flex-direction: column; /* Stack the left and right sections */
+        height: auto;
+    }
+
+    .contact-left, .contact-right {
+        flex: none;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .contact-left img {
+        width: 70%; /* Slightly smaller image on mobile */
+        max-width: 250px;
+    }
+
+    .contact-right form {
+        padding: 10px;
+    }
+
+    .contact-right input,
+    .contact-right textarea {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    .contact-right button {
+        padding: 12px;
+        font-size: 14px; /* Adjust font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-left h1 {
+        font-size: 20px; /* Smaller heading */
+    }
+
+    .contact-right h2 {
+        font-size: 18px; /* Smaller form header */
+    }
+
+    .contact-right input,
+    .contact-right textarea {
+        font-size: 14px;
+    }
+
+    .contact-right button {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
   
   
