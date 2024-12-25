@@ -113,33 +113,27 @@ font-size: 20px;
         max-height: 50px; /* Smaller logo on small screens */
     }
 }
- /* General styling */
+
+
+
+
+/* General styling for left and right sections */
 .leftside, .rightside {
     height: 100vh;
     background-color: #c01b1b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
     padding: 20px;
 }
 
 /* Right side image styling */
 .rightside img {
-    display: flex;
-    margin: auto;
-    height: 60vh;
-    width: 80vh;
-    border: none;
+    max-width: 80%;
+    height: auto;
     border-radius: 15px;
     animation: bounce 2s infinite ease-in-out, glow 1.5s infinite alternate;
-}
-
-.rightside {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
-.rightside img:hover {
-    transform: scale(1.2) rotate(10deg);
-    opacity: 0.8;
 }
 
 /* Bounce animation */
@@ -150,24 +144,6 @@ font-size: 20px;
     50% {
         transform: translateY(-20px);
     }
-}
-
-.leftside {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    color: #FFFFFF;
-    font-family: 'Hanken grotesk', sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/* Container for left and right sections */
-.container2 {
-    display: flex;
-    flex-wrap: wrap; /* Allows the columns to wrap on smaller screens */
-    width: 100%;
 }
 
 /* Main button styling */
@@ -199,30 +175,43 @@ font-size: 20px;
     font-size: 16px;
 }
 
-/* Responsive Design */
+/* Container for left and right sections */
+.container2 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap; /* Ensures the content wraps on smaller screens */
+}
+
+/* Left side styling */
+.leftside {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Hanken grotesk', sans-serif;
+    flex: 1;  /* Allow leftside to take available space */
+}
+
+/* Right side styling */
+.rightside {
+    flex: 1;  /* Allow rightside to take available space */
+}
 
 /* For screens smaller than 768px (tablets and mobile devices) */
 @media (max-width: 768px) {
     .container2 {
         flex-direction: column; /* Stack the left and right sections vertically */
-        height: auto;
+        height: auto; /* Remove fixed height */
     }
 
     .leftside, .rightside {
-        flex: none;
-        width: 100%;
+        width: 100%; /* Full width on smaller screens */
         padding: 15px;
     }
 
     .rightside img {
-        width: 100%; /* Adjust image size for smaller screens */
-        height: auto;
-    }
-
-    .jaundicetext {
-        padding-left: 15px;
-        padding-right: 15px;
-        font-size: 14px; /* Reduce font size for mobile devices */
+        width: 100%; /* Make the image responsive */
+        height: auto; /* Maintain aspect ratio */
     }
 
     .mainbutton {
@@ -231,20 +220,22 @@ font-size: 20px;
         padding: 10px 20px;
         font-size: 14px;
     }
+
+    .jaundicetext {
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 14px;
+    }
 }
 
 /* For screens smaller than 480px (mobile devices) */
 @media (max-width: 480px) {
-    .leftside {
-        padding: 10px;
-    }
-
     .leftside p {
         font-size: 14px;
     }
 
     .rightside img {
-        width: 90%;
+        width: 100%; /* Ensure the image takes full width */
         height: auto;
     }
 
@@ -257,6 +248,7 @@ font-size: 20px;
         font-size: 12px; /* Further reduce font size */
     }
 }
+
 
     .container3{
         height: 100vh;
