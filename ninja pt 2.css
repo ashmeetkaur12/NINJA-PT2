@@ -114,23 +114,21 @@ font-size: 20px;
     }
 }
 
-
-
-
 /* General styling for left and right sections */
 .leftside, .rightside {
-    height: 100vh;
+    height: auto; /* Allow height to adjust based on content */
     background-color: #c01b1b;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
     padding: 20px;
+    box-sizing: border-box; /* Include padding in width calculations */
 }
 
 /* Right side image styling */
 .rightside img {
-    max-width: 80%;
+    max-width: 100%;
     height: auto;
     border-radius: 15px;
     animation: bounce 2s infinite ease-in-out, glow 1.5s infinite alternate;
@@ -156,8 +154,7 @@ font-size: 20px;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-left: auto;
-    margin-right: 20px;
+    margin-top: 15px;
     border: 2px solid black;
     font-family: 'HK Grotesk', sans-serif;
 }
@@ -170,8 +167,7 @@ font-size: 20px;
 /* Jaundice text styling */
 .jaundicetext {
     text-align: justify;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding: 0 15px;
     font-size: 16px;
 }
 
@@ -181,6 +177,8 @@ font-size: 20px;
     flex-direction: row;
     width: 100%;
     flex-wrap: wrap; /* Ensures the content wraps on smaller screens */
+    gap: 20px; /* Add spacing between sections */
+    box-sizing: border-box; /* Include padding/border in size */
 }
 
 /* Left side styling */
@@ -189,41 +187,27 @@ font-size: 20px;
     justify-content: center;
     align-items: center;
     font-family: 'Hanken grotesk', sans-serif;
-    flex: 1;  /* Allow leftside to take available space */
+    flex: 1;
 }
 
 /* Right side styling */
 .rightside {
-    flex: 1;  /* Allow rightside to take available space */
+    flex: 1;
 }
 
 /* For screens smaller than 768px (tablets and mobile devices) */
 @media (max-width: 768px) {
     .container2 {
         flex-direction: column; /* Stack the left and right sections vertically */
-        height: auto; /* Remove fixed height */
+        gap: 0; /* Remove spacing between sections */
     }
 
     .leftside, .rightside {
-        width: 100%; /* Full width on smaller screens */
+        width: 100%;
         padding: 15px;
     }
 
-    .rightside img {
-        width: 100%; /* Make the image responsive */
-        height: auto; /* Maintain aspect ratio */
-    }
-
-    .mainbutton {
-        margin-left: 0;
-        margin-right: 0;
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-
     .jaundicetext {
-        padding-left: 15px;
-        padding-right: 15px;
         font-size: 14px;
     }
 }
@@ -234,20 +218,15 @@ font-size: 20px;
         font-size: 14px;
     }
 
-    .rightside img {
-        width: 100%; /* Ensure the image takes full width */
-        height: auto;
-    }
-
-    .mainbutton {
-        padding: 10px 15px;
-        font-size: 12px;
-    }
-
     .jaundicetext {
-        font-size: 12px; /* Further reduce font size */
-    }
+        font-size: 12px;
+    }
 }
+
+
+
+ 
+ 
 
 
     .container3{
