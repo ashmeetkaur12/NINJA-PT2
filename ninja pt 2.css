@@ -185,6 +185,13 @@ font-size: 20px;
             text-align: justify;
             padding-left: 30px;
         }
+
+
+ 
+
+    .leftside p {
+        font-size: 14px;
+    }
 @media (max-width: 768px) {
     .container2 {
         flex-direction: column; /* Stack the left and right sections vertically */
@@ -240,6 +247,7 @@ font-size: 20px;
         font-size: 12px; /* Further reduce font size */
     }
 }
+
     .container3{
         height: 100vh;
         background-color: white;
