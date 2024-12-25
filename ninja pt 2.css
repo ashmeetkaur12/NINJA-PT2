@@ -1,0 +1,488 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    font-family: 'HK Grotesk', sans-serif; /* updated to include sans-serif typeface */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: #f2f2f2;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center;
+    background-color: #fff;
+   
+}
+
+.logo {
+    margin-right: 20px; /* Add space between logo and nav items */
+}
+
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-family: 'Playfair Display', serif;
+
+}
+
+.nav-item {
+    margin-right: 20px; /* Add space between nav items */
+    font-size: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    display: inline-block; /* Make nav links inline */
+    padding: 10px 15px; /* Add padding to nav links */
+    border-radius: 5px; /* Add rounded corners to nav links */
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+color: #c01b1b;
+/* Increase size here */
+padding: 10px 20px; /* Adjust values as needed */
+font-size: 1.2em; /* Adjust values as needed */
+font-weight: bold; /* Add bold text */
+transition: padding 0.3s ease, font-size 0.3s ease; /* Add smooth transition */
+}
+
+ .button {
+background-color: #fff;
+color: #333;
+border: none;
+padding: 10px 20px;
+border-radius: 5px; /* Add rounded corners to button */
+font-weight: 500;
+cursor: pointer;
+transition: background-color 0.3s ease;
+margin-left: auto; /* Push the button to the right */
+margin-right: 20px; /* Add space between the button and the right edge */
+border: 2px solid black; /* Add a black rounded border */
+font-family: 'HK Grotesk', sans-serif; /* updated to include sans-serif typeface */
+font-size: 20px;
+
+}
+.button:hover {
+    background-color: #c01b1b;
+    color: #fff;
+}
+  .leftside,.rightside{
+    height: 100vh;
+    width: 100%;
+    background-color: #c01b1b;
+  }
+  .rightside img{
+    display: flex;
+    margin: auto;
+    height: 60vh;
+    width: 80vh;
+    border: none;
+    border-radius: 15px;
+    animation: bounce 2s infinite ease-in-out, glow 1.5s infinite alternate;
+    
+
+    }
+    .rightside {
+    justify-content: center;
+    align-items: center;
+        display: flex;
+    }
+    .rightside img:hover {
+        transform: scale(1.2) rotate(10deg);
+        opacity: 0.8;
+    }       
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+    
+
+    .leftside {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        color: #FFFFFF; /* set the text color to white */
+        top: 50%;
+        font-family:'Hanken grotesk', sans-serif;
+    }
+    
+    .container2 {
+        display: flex;
+        font-family:'Hanken grotesk', sans-serif;
+    }
+   
+      .mainbutton {
+        background-color: black;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 30px; /* Add rounded corners to button */
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-left: auto; /* Push the button to the right */
+        margin-right: 20px; /* Add space between the button and the right edge */
+        border: 2px solid black; /* Add a black rounded border */
+        font-family: 'HK Grotesk', sans-serif; /* updated to include sans-serif typeface */
+        
+        }
+        .mainbutton:hover {
+            background-color: #c01b1b;
+            color: #fff;
+        }
+        .jaundicetext{
+            text-align: justify;
+            padding-left: 30px;
+        }
+    .container3{
+        height: 100vh;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+    }
+    .container3 h1{
+        color: #c01b1b;
+    }
+    html{
+        scroll-behavior: smooth;
+    }  
+    .container3 p{
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: justify;
+        font-size: 20px;
+        font-family: 'Hanken grotesk', sans-serif;
+        color: #c01b1b;
+    }
+.wrapper{
+    width: 80vw;
+    transform: translate(-50%, -50%);
+    top: 12%;
+    left: 50%;
+    bottom: 20%;
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    gap: 10px;
+}
+.container4{
+    width: 54vh;
+    height: 28vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1em 0;
+    font-size: 16px;
+    border-radius: 0.5em;
+    border-bottom: 10px solid #c01b1b;
+    background-color: #FFFFFF;
+}
+i{
+    color: #c01b1b;
+    font-size: 2.5em;
+    text-align: center;
+}
+span.num{
+    font-family: 'HK Grotesk', sans-serif;
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+    font-size: 3em;
+}
+span.text{
+    font-family: 'HK Grotesk', sans-serif;
+    font-size: 1em;
+    text-align: center;
+    pad: 0.7em 0;
+    font-weight: 400;
+    line-height: 0;
+}
+.container5{
+    width: 100%;
+    height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c01b1b;
+}
+.profile-card{
+    width: 220px;
+    height: 220px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 50%;
+    box-shadow: -5px 8px 45px rgba(51, 51, 51, 0.126);
+    transition: all .4s;
+    margin: 0 20px;
+}
+.profile-card:hover{
+    border-radius: 10px;
+    height: 300px;
+}
+.profile-card .img{
+    width: 100%;
+    height: 100%;
+}
+.profile-card:hover img{
+    border-radius: 50%;
+     transform: translateY(-80px) ;
+}
+.img img{
+    object-fit: fill;
+    width: 100%;
+    border-radius: 50%;
+    transition: all .4s;
+}
+.caption{
+    text-align: center;
+    transform: translateY(-150px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all .5s;
+}
+.profile-card:hover .caption{
+    opacity: 1;
+}
+.caption h3{
+    font-size: 21px;
+    color: #c01b1b;
+    font-weight: 600;
+}
+.caption p{
+    font-size: 15px;
+    font-weight: 500;
+    margin: 2px 0 12px 0;
+}
+.container6{
+    background-color: #fff;
+    height: 50vh;
+}
+.container6 h1{
+    color: #c01b1b;
+    text-align: center;
+}
+.container6 {
+    width: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    top: 50%;
+    left: 50%;
+}
+
+#image-input {
+    margin-bottom: 20px;
+}
+
+#predict-btn {
+    background-color: #c01b1b;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#predict-btn:hover {
+    background-color: #c01b1b;
+}
+
+#result-card {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#result-text {
+    font-weight: bold;
+    color: #008000;
+}
+.container9 {
+    width: auto;
+    height: 100vh;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    top: 0%;
+    left: 50%;
+    background-color: #c01b1b;
+    margin-bottom: 0%;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+  
+  .slider-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #c01b1b;
+}
+
+.slider-title {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
+    background: #c01b1b;
+    border-radius: 10px;
+}
+
+.slider-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.slider-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider-images img {
+    min-width: 33%; /* Show one main and part of the previous/next image */
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+button.prev,
+button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+button.prev:hover,
+button.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+button.prev {
+    left: 10px;
+}
+
+button.next {
+    right: 10px;
+}
+  .contact-us-page {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+  
+  .contact-left, .contact-right {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .contact-left {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .contact-left h1 {
+    color: #c01b1b;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-left img {
+    width: 80%;
+    max-width: 300px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-left p {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+
+  
+  .contact-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .contact-right h2 {
+    color: #c01b1b;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-right form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contact-right input,
+  .contact-right textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .contact-right button {
+    background-color: #c01b1b;
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-right button:hover {
+    background-color: #800101;
+  }
+  
+  
