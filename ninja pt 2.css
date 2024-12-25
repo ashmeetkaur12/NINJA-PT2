@@ -76,6 +76,43 @@ font-size: 20px;
     background-color: #c01b1b;
     color: #fff;
 }
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align to start */
+    }
+
+    .nav-list {
+        flex-direction: column; /* Stack nav items */
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .nav-item {
+        margin: 10px 0; /* Space between stacked items */
+    }
+
+    .button {
+        align-self: stretch; /* Make button take full width on small screens */
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-link {
+        font-size: 16px; /* Smaller font size for small screens */
+        padding: 8px 12px;
+    }
+
+    .button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .logo img {
+        max-height: 50px; /* Smaller logo on small screens */
+    }
+}
   .leftside,.rightside{
     height: 100vh;
     width: 100%;
