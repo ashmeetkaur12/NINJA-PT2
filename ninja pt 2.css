@@ -113,12 +113,15 @@ font-size: 20px;
         max-height: 50px; /* Smaller logo on small screens */
     }
 }
-  .leftside,.rightside{
+ /* General styling */
+.leftside, .rightside {
     height: 100vh;
-    width: 100%;
     background-color: #c01b1b;
-  }
-  .rightside img{
+    padding: 20px;
+}
+
+/* Right side image styling */
+.rightside img {
     display: flex;
     margin: auto;
     height: 60vh;
@@ -126,72 +129,79 @@ font-size: 20px;
     border: none;
     border-radius: 15px;
     animation: bounce 2s infinite ease-in-out, glow 1.5s infinite alternate;
-    
+}
 
-    }
-    .rightside {
+.rightside {
     justify-content: center;
     align-items: center;
-        display: flex;
-    }
-    .rightside img:hover {
-        transform: scale(1.2) rotate(10deg);
-        opacity: 0.8;
-    }       
-    @keyframes bounce {
-        0%, 100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-20px);
-        }
-    }
-    
+    display: flex;
+}
 
-    .leftside {
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        color: #FFFFFF; /* set the text color to white */
-        top: 50%;
-        font-family:'Hanken grotesk', sans-serif;
-    }
-    
-    .container2 {
-        display: flex;
-        font-family:'Hanken grotesk', sans-serif;
-    }
-   
-      .mainbutton {
-        background-color: black;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 30px; /* Add rounded corners to button */
-        font-weight: 500;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        margin-left: auto; /* Push the button to the right */
-        margin-right: 20px; /* Add space between the button and the right edge */
-        border: 2px solid black; /* Add a black rounded border */
-        font-family: 'HK Grotesk', sans-serif; /* updated to include sans-serif typeface */
-        
-        }
-        .mainbutton:hover {
-            background-color: #c01b1b;
-            color: #fff;
-        }
-        .jaundicetext{
-            text-align: justify;
-            padding-left: 30px;
-        }
+.rightside img:hover {
+    transform: scale(1.2) rotate(10deg);
+    opacity: 0.8;
+}
 
-
- 
-
-    .leftside p {
-        font-size: 14px;
+/* Bounce animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
     }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.leftside {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    font-family: 'Hanken grotesk', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Container for left and right sections */
+.container2 {
+    display: flex;
+    flex-wrap: wrap; /* Allows the columns to wrap on smaller screens */
+    width: 100%;
+}
+
+/* Main button styling */
+.mainbutton {
+    background-color: black;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: auto;
+    margin-right: 20px;
+    border: 2px solid black;
+    font-family: 'HK Grotesk', sans-serif;
+}
+
+.mainbutton:hover {
+    background-color: #c01b1b;
+    color: #fff;
+}
+
+/* Jaundice text styling */
+.jaundicetext {
+    text-align: justify;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 16px;
+}
+
+/* Responsive Design */
+
+/* For screens smaller than 768px (tablets and mobile devices) */
 @media (max-width: 768px) {
     .container2 {
         flex-direction: column; /* Stack the left and right sections vertically */
