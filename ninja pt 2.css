@@ -28,7 +28,7 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Oswald', sans-serif;
 
 }
 
@@ -68,7 +68,7 @@ transition: background-color 0.3s ease;
 margin-left: auto; /* Push the button to the right */
 margin-right: 20px; /* Add space between the button and the right edge */
 border: 2px solid black; /* Add a black rounded border */
-font-family: 'HK Grotesk', sans-serif; /* updated to include sans-serif typeface */
+font-family: 'Oswald', sans-serif; /* updated to include sans-serif typeface */
 font-size: 20px;
 
 }
@@ -113,122 +113,80 @@ font-size: 20px;
         max-height: 50px; /* Smaller logo on small screens */
     }
 }
-
-/* General styling for left and right sections */
-.leftside, .rightside {
-    height: auto; /* Allow height to adjust based on content */
+  .leftside,.rightside{
+    height: 100vh;
+    width: 100%;
     background-color: #c01b1b;
+  }
+  .rightside img{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    padding: 20px;
-    box-sizing: border-box; /* Include padding in width calculations */
-}
-
-/* Right side image styling */
-.rightside img {
-    max-width: 100%;
-    height: auto;
+    margin: auto;
+    height: 60vh;
+    width: 80vh;
+    border: none;
     border-radius: 15px;
     animation: bounce 2s infinite ease-in-out, glow 1.5s infinite alternate;
-}
+    
 
-/* Bounce animation */
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
     }
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-/* Main button styling */
-.mainbutton {
-    background-color: black;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 30px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 15px;
-    border: 2px solid black;
-    font-family: 'HK Grotesk', sans-serif;
-}
-
-.mainbutton:hover {
-    background-color: #c01b1b;
-    color: #fff;
-}
-
-/* Jaundice text styling */
-.jaundicetext {
-    text-align: justify;
-    padding: 0 15px;
-    font-size: 16px;
-}
-
-/* Container for left and right sections */
-.container2 {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    flex-wrap: wrap; /* Ensures the content wraps on smaller screens */
-    gap: 20px; /* Add spacing between sections */
-    box-sizing: border-box; /* Include padding/border in size */
-}
-
-/* Left side styling */
-.leftside {
-    text-align: center;
+    .rightside {
     justify-content: center;
     align-items: center;
-    font-family: 'Hanken grotesk', sans-serif;
-    flex: 1;
-}
+        display: flex;
+    }
+    .rightside img:hover {
+        transform: scale(1.2) rotate(10deg);
+        opacity: 0.8;
+    }       
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+    
 
-/* Right side styling */
-.rightside {
-    flex: 1;
-}
-
-/* For screens smaller than 768px (tablets and mobile devices) */
-@media (max-width: 768px) {
+    .leftside {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        color: #FFFFFF; /* set the text color to white */
+        top: 50%;
+        font-family:'Oswald', sans-serif;
+    }
+    .leftside .jaundicetext{
+        font-family: 'PT Serif', serif;
+    }
     .container2 {
-        flex-direction: column; /* Stack the left and right sections vertically */
-        gap: 0; /* Remove spacing between sections */
+        display: flex;
+        font-family:'Oswald', sans-serif;
     }
-
-    .leftside, .rightside {
-        width: 100%;
-        padding: 15px;
-    }
-
-    .jaundicetext {
-        font-size: 14px;
-    }
-}
-
-/* For screens smaller than 480px (mobile devices) */
-@media (max-width: 480px) {
-    .leftside p {
-        font-size: 14px;
-    }
-
-    .jaundicetext {
-        font-size: 12px;
-    }
-}
-
-
-
- 
- 
-
-
+   
+      .mainbutton {
+        background-color: black;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 30px; /* Add rounded corners to button */
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-left: auto; /* Push the button to the right */
+        margin-right: 20px; /* Add space between the button and the right edge */
+        border: 2px solid black; /* Add a black rounded border */
+        font-family: 'Oswald', sans-serif; /* updated to include sans-serif typeface */
+        
+        }
+        .mainbutton:hover {
+            background-color: #c01b1b;
+            color: #fff;
+        }
+        .jaundicetext{
+            text-align: justify;
+            padding-left: 30px;
+        }
     .container3{
         height: 100vh;
         background-color: white;
@@ -237,6 +195,7 @@ font-size: 20px;
     }
     .container3 h1{
         color: #c01b1b;
+        font-family: 'Oswald', sans-serif;
     }
     html{
         scroll-behavior: smooth;
@@ -246,7 +205,7 @@ font-size: 20px;
         padding-right: 20px;
         text-align: justify;
         font-size: 20px;
-        font-family: 'Hanken grotesk', sans-serif;
+        font-family: 'PT serif', serif;
         color: #c01b1b;
     }
 .wrapper{
@@ -285,62 +244,14 @@ span.num{
     font-size: 3em;
 }
 span.text{
-    font-family: 'HK Grotesk', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 1em;
     text-align: center;
     pad: 0.7em 0;
     font-weight: 400;
     line-height: 0;
 }
-@media (max-width: 768px) {
-    .container3 h1 {
-        font-size: 2em;
-    }
 
-    .container3 p {
-        font-size: 16px;
-    }
-
-    .wrapper {
-        gap: 15px;
-    }
-
-    .container4 {
-        width: 240px;
-        height: 160px;
-    }
-
-    span.num {
-        font-size: 2em;
-    }
-
-    span.text {
-        font-size: 0.9em;
-    }
-}
-
-@media (max-width: 480px) {
-    .container3 h1 {
-        font-size: 1.8em;
-    }
-
-    .container3 p {
-        font-size: 14px;
-    }
-
-    .container4 {
-        width: 200px;
-        height: 140px;
-    }
-
-    span.num {
-        font-size: 1.8em;
-    }
-
-    span.text {
-        font-size: 0.8em;
-    }
-}
 .container5{
     width: 100%;
     height: 45vh;
@@ -366,14 +277,20 @@ span.text{
 .profile-card .img{
     width: 100%;
     height: 100%;
+    border-radius: 50%; /* Makes the container circular */
+    justify-content: center;
+    align-items: center;
+    background-color: white;
 }
 .profile-card:hover img{
     border-radius: 50%;
      transform: translateY(-80px) ;
 }
 .img img{
-    object-fit: fill;
+    object-fit: cover;
+    overflow: hidden;
     width: 100%;
+    height: auto;
     border-radius: 50%;
     transition: all .4s;
 }
@@ -391,62 +308,13 @@ span.text{
     font-size: 21px;
     color: #c01b1b;
     font-weight: 600;
+    font-family: 'Oswald', sans-serif;
 }
 .caption p{
     font-size: 15px;
     font-weight: 500;
     margin: 2px 0 12px 0;
-}
-@media (max-width: 768px) {
-    #Our\ team {
-        font-size: 2em;
-    }
-
-    .container5 {
-        gap: 15px;
-    }
-
-    .profile-card {
-        width: 180px;
-        height: 250px;
-    }
-
-    .profile-card .img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .caption h3 {
-        font-size: 16px;
-    }
-
-    .caption p {
-        font-size: 13px;
-    }
-}
-
-@media (max-width: 480px) {
-    .Ourteam {
-        font-size: 1.8em;
-    }
-
-    .profile-card {
-        width: 160px;
-        height: 220px;
-    }
-
-    .profile-card .img {
-        width: 80px;
-        height: 80px;
-    }
-
-    .caption h3 {
-        font-size: 14px;
-    }
-
-    .caption p {
-        font-size: 12px;
-    }
+    font-family: 'PT serif', serif;
 }
 .container6{
     background-color: #fff;
@@ -455,6 +323,7 @@ span.text{
 .container6 h1{
     color: #c01b1b;
     text-align: center;
+    font-family: 'Oswald', sans-serif;
 }
 .container6 {
     width: auto;
@@ -477,6 +346,7 @@ span.text{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: 'PT serif', serif;
 }
 
 #predict-btn:hover {
@@ -494,16 +364,10 @@ span.text{
 #result-text {
     font-weight: bold;
     color: #008000;
-}
-@media (max-width: 768px) {
-    .container6 {
-        flex-direction: column;
-    }
+    font-family: 'Oswald', sans-serif;
 
-    .bilirubin-checker {
-        max-width: 100%;
-    }
 }
+
 .container9 {
     width: auto;
     height: 100vh;
@@ -520,6 +384,7 @@ span.text{
     font-size: 2.5rem;
     color: #ffffff;
     margin-bottom: 20px;
+    font-family: 'Oswald', sans-serif;
   }
   
   .slider-container {
@@ -591,19 +456,6 @@ button.prev {
 button.next {
     right: 10px;
 }
-@media (max-width: 768px) {
-    .slider-images img {
-        min-width: 50%; /* Show fewer images for smaller screens */
-    }
-
-    .slider {
-        width: 100%;
-    }
-
-    .slider-title {
-        font-size: 1.5rem;
-    }
-}
   .contact-us-page {
     display: flex;
     width: 100%;
@@ -612,7 +464,18 @@ button.next {
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     overflow: hidden;
+    position: relative;
   }
+  .footer-text {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 14px;
+    color: #555;
+    font-family: 'PT serif', serif;
+    opacity: 0.7;
+    text-align: right;
+}
   
   .contact-left, .contact-right {
     flex: 1;
@@ -643,6 +506,7 @@ button.next {
   .contact-left p {
     margin: 10px 0;
     font-size: 16px;
+    font-family: 'PT serif', serif;
   }
 
   
@@ -671,6 +535,7 @@ button.next {
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
+    font-family: 'PT serif', serif;
   }
   
   .contact-right button {
@@ -682,61 +547,10 @@ button.next {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-family: 'Oswald', sans-serif;
   }
   
   .contact-right button:hover {
     background-color: #800101;
   }
-@media (max-width: 768px) {
-    .contact-us-page {
-        flex-direction: column; /* Stack the left and right sections */
-        height: auto;
-    }
-
-    .contact-left, .contact-right {
-        flex: none;
-        width: 100%;
-        padding: 15px;
-    }
-
-    .contact-left img {
-        width: 70%; /* Slightly smaller image on mobile */
-        max-width: 250px;
-    }
-
-    .contact-right form {
-        padding: 10px;
-    }
-
-    .contact-right input,
-    .contact-right textarea {
-        font-size: 14px; /* Adjust font size for smaller screens */
-    }
-
-    .contact-right button {
-        padding: 12px;
-        font-size: 14px; /* Adjust font size */
-    }
-}
-
-@media (max-width: 480px) {
-    .contact-left h1 {
-        font-size: 20px; /* Smaller heading */
-    }
-
-    .contact-right h2 {
-        font-size: 18px; /* Smaller form header */
-    }
-
-    .contact-right input,
-    .contact-right textarea {
-        font-size: 14px;
-    }
-
-    .contact-right button {
-        padding: 12px;
-        font-size: 14px;
-    }
-}
-  
-  
+ 
