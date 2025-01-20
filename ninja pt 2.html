@@ -23,35 +23,29 @@
     <script src="ninja.js" type="text/javascript"></script>
     </head>
     <body>
-    <div class="container" id="container">
         <div class="navbar">
             <div class="logo"><img style="width: 30vh; height: 15vh;" src="ninja logo pt2.png"></div>
             <div class="logo"><img style="width: 10vh; height: 15vh;" src="logo img.jpg"></div>
-
+            
+            <button class="toggle-button" onclick="toggleMenu()">☰</button> <!-- Toggle button -->
+            
             <ul class="nav-list">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#container6" class="nav-link">Predict</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#Our team" class="nav-link">Our Team</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact us</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Publications</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Products</a>
-                </li>
-                  
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#container6" class="nav-link">Predict</a></li>
+                <li class="nav-item"><a href="#Our team" class="nav-link">Our Team</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact us</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Publications</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
             </ul>
-            <button class="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">Our Database</button>
+            <button class="button" onclick="window.open('https://docs.google.com/forms/...')">Our Database</button>
         </div>
-    </div>
+        <script>
+            function toggleMenu() {
+    const navList = document.querySelector('.nav-list');
+    navList.classList.toggle('active');
+}
+
+        </script>
     <div class="container2">
         <div class="leftside">
             <br><br><br>
