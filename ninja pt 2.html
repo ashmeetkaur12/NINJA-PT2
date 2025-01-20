@@ -26,6 +26,8 @@
     <div class="container" id="container">
         <div class="navbar">
             <div class="logo"><img style="width: 30vh; height: 15vh;" src="ninja logo pt2.png"></div>
+            <div class="logo"><img style="width: 10vh; height: 15vh;" src="logo img.jpg"></div>
+
             <ul class="nav-list">
                 <li class="nav-item">
                     <a href="#" class="nav-link">Home</a>
@@ -297,6 +299,34 @@ updateSliderPosition();
     </iframe>
     <p>Connect with us</p>
   </div>
+  <div class="collapsible-container">
+    <button class="toggle-button" onclick="toggleLinks()">☰</button>
+    <div class="links" id="links">
+      <a href="https://gmch.gov.in/" target="_blank">
+        <img src="C:\Users\Ashmeet\Documents\GitHub\NINJA-PT2\gmch.jpg" alt="Link 1">
+      </a>
+      <a href="https://www.icmr.gov.in/" target="_blank">
+        <img src="C:\Users\Ashmeet\Documents\GitHub\NINJA-PT2\icmr.jpg" alt="Link 2">
+      </a>
+      <a href="https://mcmdavcwchd.edu.in/" target="_blank">
+        <img src="C:\Users\Ashmeet\Documents\GitHub\NINJA-PT2\mcm.jpg" alt="Link 3">
+      </a>
+      <a href="https://uiet.puchd.ac.in/" target="_blank">
+        <img src="C:\Users\Ashmeet\Documents\GitHub\NINJA-PT2\uiet.jpg" alt="Link 4">
+      </a>
+    </div>
+  </div>
+    <script>
+    function toggleLinks() {
+  const links = document.getElementById('links');
+  if (links.style.display === 'block') {
+    links.style.display = 'none';
+  } else {
+    links.style.display = 'block';
+  }
+}
+
+  </script>
   <div class="contact-right">
     <form>
       <input type="text" placeholder="Name" required>
