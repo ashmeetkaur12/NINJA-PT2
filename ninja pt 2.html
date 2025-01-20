@@ -44,20 +44,25 @@
                     <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
                 </ul>
         
-                <button class="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">Our Database</button>
-            </div>
-        </div>
-        
-        <script>
-          // JavaScript to toggle the navigation menu visibility
+                <!-- Button Container to place buttons next to each other -->
+                <div class="button-container">
+                    <button class="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">Our Database</button>
+                    <!-- Add the toggle button if needed (for mobile/tablets) -->
+                </div>
+                <script>
+                    // JavaScript to toggle the navigation menu visibility
 const toggleButton = document.getElementById('toggleButton');
 const navList = document.getElementById('navList');
 
+// Toggle the menu visibility on button click
 toggleButton.addEventListener('click', () => {
-    navList.classList.toggle('active'); // Toggle the 'active' class
+    navList.classList.toggle('active'); // Toggle the 'active' class to show/hide the menu
 });
 
-        </script>
+                </script>
+            </div>
+        </div>
+    
     <div class="container2">
         <div class="leftside">
             <br><br><br>
