@@ -82,41 +82,66 @@ font-size: 20px;
     background-color: #c01b1b;
     color: #fff;
 }
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column; /* Stack items vertically */
-        align-items: flex-start; /* Align to start */
+.toggle-button {
+    display: none; /* Hidden by default */
+}
+
+/* Tablets and smaller devices (landscape and portrait) */
+@media (max-width: 1024px) {
+    .toggle-button {
+        display: block; /* Show toggle button */
     }
 
     .nav-list {
-        flex-direction: column; /* Stack nav items */
+        display: none; /* Hide the navigation menu by default */
+        flex-direction: column;
+        background-color: #fff;
+        position: absolute;
+        top: 70px; /* Adjust based on navbar height */
+        left: 0;
         width: 100%;
-        align-items: flex-start;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar {
+        justify-content: space-between; /* Space out logo and toggle button */
     }
 
     .nav-item {
-        margin: 10px 0; /* Space between stacked items */
-    }
-
-    .button {
-        align-self: stretch; /* Make button take full width on small screens */
+        margin: 10px 0;
         text-align: center;
     }
 }
 
-@media (max-width: 480px) {
-    .nav-link {
-        font-size: 16px; /* Smaller font size for small screens */
-        padding: 8px 12px;
+/* Phones (portrait and smaller devices) */
+@media (max-width: 767px) {
+    .toggle-button {
+        display: block; /* Ensure toggle is visible on small devices */
+        font-size: 25px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .nav-list {
+        display: none; /* Hide menu by default */
     }
 
     .button {
-        font-size: 14px;
-        padding: 8px 12px;
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+}
+
+/* Default desktop view (laptops and wider screens) */
+@media (min-width: 1025px) {
+    .toggle-button {
+        display: none; /* Hide toggle button for laptops and larger screens */
     }
 
-    .logo img {
-        max-height: 50px; /* Smaller logo on small screens */
+    .nav-list {
+        display: flex; /* Always show nav items in a row */
     }
 }
   .leftside,.rightside{
