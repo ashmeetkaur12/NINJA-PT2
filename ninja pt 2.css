@@ -95,22 +95,28 @@ font-size: 20px;
         background: none;
         border: none;
         cursor: pointer;
-        margin-right: 10px;
         z-index: 1100; /* Keep toggle button above other content */
+        color: #333; /* Set color for the hamburger icon */
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between; /* Place logo and buttons at opposite ends */
+        align-items: center;
     }
 
     .nav-list {
         display: none; /* Hide navigation items by default */
         position: fixed; /* Fix navigation on the right side */
         top: 0;
-        right: -250px; /* Hide off-screen initially */
-        width: 250px; /* Set width for the nav */
+        right: -250px; /* Initially hide off-screen */
+        width: 250px;
         height: 100%;
         background-color: #fff;
-        box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+        box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
         flex-direction: column;
-        padding-top: 50px; /* Add some space from the top */
-        transition: right 0.3s ease; /* Smooth transition */
+        padding-top: 50px;
+        transition: right 0.3s ease; /* Smooth transition for the slide-in effect */
     }
 
     .nav-item {
@@ -137,6 +143,15 @@ font-size: 20px;
     /* Show the navigation menu when active */
     .nav-list.active {
         right: 0; /* Slide the menu into view */
+    }
+
+    .button-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .button {
+        margin-left: 10px; /* Space between buttons */
     }
 }
 
