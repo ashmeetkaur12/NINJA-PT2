@@ -11,76 +11,128 @@ body {
     background-color: #f2f2f2;
 }
 
+/* General navbar styling remains unchanged for laptops */
 .navbar {
-    display: flex;
-    justify-content: flex-start; /* Align items to the left */
-    align-items: center;
-    background-color: #fff;
-    position: fixed; /* Fixes the navbar at the top of the page */
-    top: 0; /* Ensure it's positioned at the top */
-    left: 0; /* Ensure it's aligned to the left edge */
-    width: 100%; /* Make it span the full width */
-    z-index: 1000; /* Keeps it above other elements */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
-}
-
-.logo {
-    margin-right: 20px; /* Add space between logo and nav items */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .nav-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    font-family: 'Oswald', sans-serif; 
-    justify-content: space-around;
-
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* Default display for laptop view */
+  justify-content: space-around;
+  font-family: 'Oswald', sans-serif;
 }
 
 .nav-item {
-    margin-right: 20px; /* Add space between nav items */
-    font-size: 20px;
+  margin-right: 20px;
+  font-size: 20px;
 }
 
 .nav-link {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    display: inline-block; /* Make nav links inline */
-    padding: 10px 15px; /* Add padding to nav links */
-    border-radius: 5px; /* Add rounded corners to nav links */
-    transition: background-color 0.3s ease;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .nav-link:hover {
-color: #c01b1b;
-/* Increase size here */
-padding: 10px 20px; /* Adjust values as needed */
-font-size: 1.2em; /* Adjust values as needed */
-font-weight: bold; /* Add bold text */
-transition: padding 0.3s ease, font-size 0.3s ease; /* Add smooth transition */
+  color: #c01b1b;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  transition: padding 0.3s ease, font-size 0.3s ease;
 }
 
- .button {
-background-color: #fff;
-color: #333;
-border: none;
-padding: 10px 20px;
-border-radius: 5px; /* Add rounded corners to button */
-font-weight: 500;
-cursor: pointer;
-transition: background-color 0.3s ease;
-margin-left: auto; /* Push the button to the right */
-margin-right: 20px; /* Add space between the button and the right edge */
-border: 2px solid black; /* Add a black rounded border */
-font-family: 'Oswald', sans-serif; /* updated to include sans-serif typeface */
-font-size: 20px;
-
+.button-container {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
+
+.button {
+  background-color: #fff;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 2px solid black;
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+}
+
 .button:hover {
-    background-color: #c01b1b;
-    color: #fff;
+  background-color: #c01b1b;
+  color: #fff;
+}
+
+/* Hide nav items for mobile and tablet */
+@media (max-width: 1024px) {
+  .nav-list {
+      display: none; /* Hide nav items by default */
+      position: fixed;
+      top: 0;
+      right: -250px; /* Initially hidden off-screen */
+      width: 250px;
+      height: 100%;
+      flex-direction: column;
+      background-color: #fff;
+      padding-top: 50px;
+      box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
+      transition: right 0.3s ease;
+  }
+
+  .nav-list.active {
+      right: 0; /* Slide the menu into view */
+  }
+
+  .nav-item {
+      margin: 20px 0;
+      text-align: center;
+  }
+
+  .menu-button {
+      display: block; /* Show toggle button */
+      font-size: 25px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: auto;
+      color: #333;
+  }
+
+  .button-container {
+      flex-direction: row;
+      justify-content: flex-end;
+  }
+}
+
+/* Ensure nav items are visible in laptop view */
+@media (min-width: 1025px) {
+  .menu-button {
+      display: none; /* Hide toggle button */
+  }
+
+  .nav-list {
+      display: flex;
+      position: static; /* Reset position */
+      flex-direction: row;
+  }
 }
 
   .leftside,.rightside{
