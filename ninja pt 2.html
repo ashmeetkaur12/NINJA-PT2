@@ -57,74 +57,323 @@
                 navList.classList.toggle('show');
             });
         </script>
-    <div class="newcontainer">
-        <img src="WhatsApp Image 2025-04-07 at 19.16.04_8ec78897.jpg" style="width: 100%; top: 30%; padding-top: 10%; height: 70vh;"> 
+        
+        
+    
+    <div class="container2">
+        <div class="leftside">
+            <br><br><br>
+            <p></p>
+           <b><p style="font-size: 17px; text-align: center;padding-left: 20px;">NINJA:"Non-invasive neonate jaundice estimation using artificial intelligence"</p></b> 
+            <br><br><div class= "jaundicetext">Jaundice is a common condition in newborns, marked by a yellow tint to the skin and eyes due to elevated bilirubin levels in the blood. Traditional jaundice assessment methods, such as manual visual inspection or invasive blood tests, tend to be either subjective or uncomfortable for infants. The focus of the project is to explore the range of existing techniques, methodologies, and technologies. The project aims to evaluate some non-invasive methods to detect jaundice. With only the picture of infant, bilirubin levels could be predicted which in turn will predict jaundice. 
+            </div>
+                <br><br>
+            <p></p><br>
+            <a href="#container3"><button class="mainbutton">Scroll down</button></a> 
+        </div>
+        <div class="rightside">
+            <img src="jaundice ninja.png" style="vertical-align: middle;">
+        </div>
     </div>
     <div class="container3" id="container3">
         <h1 style="text-align: center;">NON INVASIVE NEONATE JAUNDICE ESTIMATION 
         </h1>
         <p>Non-invasive neonate jaundice estimation is a method used to assess jaundice in newborns without the need for blood draws. Jaundice, caused by elevated bilirubin levels, is common in newborns and can lead to serious complications if left untreated. Traditionally, bilirubin levels were measured through blood samples, but non-invasive techniques like transcutaneous bilirubinometry now offer a painless alternative. 
             This method reduces discomfort, minimizes infection risk, and allows for frequent monitoring, especially in preterm or at-risk infants. <br>
-            Main aim of project is to predict bilirubin level of infant which in turn will predict jaundice.    of their body parts (Face , Sternum and Full Body)  are clicked with the help of phone, which in turn will predict bilirubin level.These    are captured at various locations using the same device to ensure consistency in the data collected. By analyzing these   , the system aims to accurately predict the bilirubin levels, providing a non-invasive, efficient, and reliable method for jaundice estimation in newborns. This approach not only enhances the comfort and safety of the infants but also offers a practical solution for parents and healthcare providers to monitor jaundice more effectively.</p>
+            Main aim of project is to predict bilirubin level of infant which in turn will predict jaundice. Images of their body parts (Face , Sternum and Full Body)  are clicked with the help of phone, which in turn will predict bilirubin level.These images are captured at various locations using the same device to ensure consistency in the data collected. By analyzing these images, the system aims to accurately predict the bilirubin levels, providing a non-invasive, efficient, and reliable method for jaundice estimation in newborns. This approach not only enhances the comfort and safety of the infants but also offers a practical solution for parents and healthcare providers to monitor jaundice more effectively.</p>
                     <div class="wrapper">
             <div class="container4">
-                <img src= "face clr.jpg">
+                <i class="fa-regular fa-face-smile-beam"></i>
                 <span class="num" data-val="700">0000</span>
                 <span class="text">Face</span>
             </div>
 
             <div class="container4">
-                <img src="strnum clr.jpg">
+                <i class="fa-solid fa-bone"></i>
                 <span class="num" data-val="700">0000</span>
                 <span class="text">Sternum</span>
             </div>
 
             <div class="container4">
-                <img src="lgo cpy clr.jpg">
+                <i class="fa-solid fa-child"></i>
                  <span class="num" data-val="700">0000</span>
                 <span class="text">Full body</span>
             </div>
         </div>
     </div>
-    <script src="js.js"></script>
-    <div class="containers">
+    <div class="slider-container">
+        <h1 class="slider-title">A GLIMPSE OF OUR DATABASE</h1>
         <div class="slider">
-            <div class="box1">
+            <button class="prev">&lt;</button>
+            <div class="slider-wrapper">
+                <div class="slider-images">
+                    <!-- Add 16 images here -->
+                    <img src="img 1.jpg" alt="Image 1">
+                    <img src="img 2.jpg" alt="Image 2">
+                    <img src="img 3.jpg" alt="Image 3">
+                    <img src="img 4.jpg" alt="Image 4">
+                    <img src="img 5.jpg" alt="Image 5">
+                    <img src="img 6.jpg" alt="Image 6">
+                    <img src="img 7.jpg" alt="Image 7">
+                    <img src="img 8.jpg" alt="Image 8">
+                    <img src="img 9.jpg" alt="Image 9">
+                    <img src="img 10.jpg" alt="Image 10">
+            
+                </div>
             </div>
-            <div class="box2">
+            <button class="next">&gt;</button>
+        </div>
+    </div>
+    <script>
+        const sliderImages = document.querySelector('.slider-images');
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
+
+let currentIndex = 0; // Tracks the current image index
+const totalImages = document.querySelectorAll('.slider-images img').length;
+
+function updateSliderPosition() {
+    const offset = -currentIndex * (100 / 3); // Shift by 1/3rd of the viewport width
+    sliderImages.style.transform = `translateX(${offset}%)`;
+}
+
+// Move to the previous image
+prevButton.addEventListener('click', () => {
+    currentIndex = (currentIndex === 0) ? totalImages - 1 : currentIndex - 1;
+    updateSliderPosition();
+});
+
+// Move to the next image
+nextButton.addEventListener('click', () => {
+    currentIndex = (currentIndex === totalImages - 1) ? 0 : currentIndex + 1;
+    updateSliderPosition();
+});
+
+// Initialize slider position
+updateSliderPosition();
+
+    </script>
+        <div class="container6" id="container6" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+            <div style="text-align: center;">
+                <u style="color: #a30203;">
+                    <h1 style="margin: 0;">BILIRUBIN CHECKER</h1>
+                </u><br><br>
+                <input type="file" id="image-input" accept="image/*">
+                <button id="predict-btn">Predict</button>
+                <div id="result-card">
+                    <h2 id="result-text"></h2>
+                </div>
             </div>
-            <div class="box3">
+            <div>
+                <img id="image-preview" style="display: none; max-width: 150px; max-height: 150px; border: 1px solid #ccc;" alt="Preview will appear here">
             </div>
-            <div class="box4">
+        </div>
+        
+        <script>
+            const imageInput = document.getElementById('image-input');
+            const predictBtn = document.getElementById('predict-btn');
+            const resultText = document.getElementById('result-text');
+            const resultCard = document.getElementById('result-card');
+            const imagePreview = document.getElementById('image-preview');
+        
+            // Event listener to display image preview when a file is selected
+            imageInput.addEventListener('change', () => {
+                const file = imageInput.files[0];
+                if (file) {
+                    const reader = new FileReader();
+        
+                    // When the file is read, display it in the img tag
+                    reader.onload = (event) => {
+                        imagePreview.src = event.target.result;
+                        imagePreview.style.display = 'block'; // Show the image
+                    };
+        
+                    reader.readAsDataURL(file); // Read the file as a base64 URL
+                }
+            });
+        
+            // Event listener for the Predict button
+            predictBtn.addEventListener('click', () => {
+                console.log('Button clicked!');
+                resultText.textContent = 'Normal Bilirubin'; // Simulated result
+            });
+        </script>
+        
+        
+        <h1 class= "Ourteam" id="Our team" style="text-align: center; background-color: #a30203; color: #fff;">OUR TEAM</h1>
+
+    <div class="container5"> 
+
+        <div class="profile-card">
+            <div class="img">
+                <img src="navdeep maam.png">
             </div>
-            <div class="box5">
+            <div class="caption">
+                <h3>Dr. Navdeep Kaur</h3>
+                <p>Assistant Professor, MCM DAV College for Women, Chandigarh</p>
             </div>
-            <div class="box6">
+        </div>
+        <div class="profile-card">
+            <div class="img">
+                <img src="ajay mittal.png">
             </div>
-            <div class="box7">
+            <div class="caption">
+                <h3>Dr. Ajay Mittal</h3>
+                <p>Professor,UIET, Panjab University, Chandigarhr</p>
+            </div>
+        </div>
+        <div class="profile-card">
+            <div class="img">
+                <img src="mandeep maam.png">
+            </div>
+            <div class="caption">
+                <h3>Dr. Mandeep K Chawla</h3>
+                <p>Assistant Professor, MCM DAV College for Women, Chandigarh</p>
+                
+            </div>
+        </div>
+        <div class="profile-card">
+            <div class="img">
+                <img src="suksham jain.png">
+            </div>
+            <div class="caption">
+                <h3>Dr. Suksham Jain</h3>
+                <p>Professor, GMCH-32, Chandigarh</p>
+                
+            </div>
+        </div>
+        </div>
+    <div class="container5">
+        <div class="profile-card">
+            <div class="img">
+                <img src="preeti aggarwal.png">
+            </div>
+            <div class="caption">
+                <h3>Dr. Preeti Aggarwal</h3>
+                <p>Assistant Professor, UIET, Panjab University, Chandigarh</p>
+            </div>
+        </div>
+        <div class="profile-card">
+            <div class="img">
+                <img src="deepak chawla.png">
+            </div>
+            <div class="caption">
+                <h3>Dr. Deepak Chawla</h3>
+                <p>Professor, GMCH-32, Chandigarh</p>
+            </div>
+        </div>
+        <div class="profile-card">
+            <div class="img">
+                <img src="sonali.png">
+            </div>
+            <div class="caption">
+                <h3>Sonali Mehndiratta</h3>
+                <p>Project Technician support-III</p>
+            </div>
+        </div>
+        <div class="profile-card">
+            <div class="img">
+                <img src="bipan.png">
+            </div>
+            <div class="caption">
+                <h3>Bipan Tiwari</h3>
+                <p>Project Technician support-III
+                </p>
+            </div>
+        </div>
+        <div class="profile-card">
+            <div class="img">
+                <img src="harveen.png">
+            </div>
+            <div class="caption">
+                <h3>Harveen Kaur</h3>
+                <p>Project Technician support-I
+                </p>
             </div>
         </div>
     </div>
-    <div id="test"></div>
-
-
-    <!-- Js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <div class="contact-us-page" id="contact">
+  <div class="contact-left">
+    <h1>CONTACT US</h1>
+    <!-- Replace the image with Google Maps iframe -->
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.227830122259!2d76.74353831508634!3d30.735302381629115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fec10b2388f81%3A0x165c062b0a38b54b!2sMCM%20DAV%20College%2C%20Sector%2036%2C%20Chandigarh%2C%20Chandigarh%20160036!5e0!3m2!1sen!2sin!4v1702109453456!5m2!1sen!2sin" 
+      width="100%" 
+      height="300" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+    <p>Connect with us</p>
+  </div>
+  <div class="collapsible-container">
+    <button class="toggle-button" onclick="toggleLinks()">☰</button>
+    <div class="links" id="links">
+      <a href="https://gmch.gov.in/" target="_blank">
+        <img src="C:\Users\Ashmeet\Documents\GitHub\NINJA-PT2\gmch.jpg" alt="Link 1">
+      </a>
+      <a href="https://www.icmr.gov.in/" target="_blank">
+        <img src="C:\Users\Ashmeet\Documents\GitHub\NINJA-PT2\icmr.jpg" alt="Link 2">
+      </a>
+      <a href="https://mcmdavcwchd.edu.in/" target="_blank">
+        <img src="C:\Users\Ashmeet\Documents\GitHub\NINJA-PT2\mcm.jpg" alt="Link 3">
+      </a>
+      <a href="https://uiet.puchd.ac.in/" target="_blank">
+        <img src="C:\Users\Ashmeet\Documents\GitHub\NINJA-PT2\uiet.jpg" alt="Link 4">
+      </a>
+    </div>
+  </div>
     <script>
-        function rotate() {
-            var lastChild = $('.slider div:last-child').clone();
-            /*$('#test').html(lastChild)*/
-            $('.slider div').removeClass('firstSlide')
-            $('.slider div:last-child').remove();
-            $('.slider').prepend(lastChild)
-            $(lastChild).addClass('firstSlide')
-        }
+    function toggleLinks() {
+  const links = document.getElementById('links');
+  if (links.style.display === 'block') {
+    links.style.display = 'none';
+  } else {
+    links.style.display = 'block';
+  }
+}
 
-        window.setInterval(function () {
-            rotate()
-        }, 4000);
+  </script>
+  <div class="contact-right">
+    <form>
+      <input type="text" placeholder="Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="tel" placeholder="Phone" required>
+      <textarea placeholder="Message" rows="4" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <<div class="footer-text">
+    <div class="footer-container">
+      <!-- Scroll to Top Button -->
+      <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+  
+      <!-- Social Media Icons -->
+      <div class="social-icons">
+        <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+          <img src="insta icon.jpg" alt="Instagram">
+        </a>
+        <a href="https://www.youtube.com" target="_blank" aria-label="YouTube">
+          <img src="youtube.png" alt="YouTube">
+        </a>
+      </div>
+  
+      <!-- Footer Text -->
+      <span>Created by Ashmeet Kaur</span>
+    </div>
+  </div>
+  
+  <script>
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Smooth scrolling effect
+      });
+    }
+  </script>
+  
 
-    </script>
-    
+ <script src="js.js"></script>
     </body>
     </html>
