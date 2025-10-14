@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>NINJA</title>
+    <link
+        href="ninja pt 2.css"
+        rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="ninja logo pt2.png" alt="Logo">
+            </div>
+            <div class="logoIMG">
+                <img src="logo img.jpg" alt="Logo">
+            </div>
+
+
+            <ul class="nav-list" id="navList">
+                <li class="nav-item"><a href="Untitled-1.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="#container6" class="nav-link">Predict</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Publications</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
+                <li class="nav-item"><a href="ourteam.html" class="nav-link">Our Team</a></li>
+
+
+            </ul>
+            <button class="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
+                Our Database
+            </button>
+        </div>
+    </div>
+    <div class="container3" style="top: 30%;padding-top: 10%">
+        <div class="card">
+        <h1 style="text-align: center;">  PUBLICATION #1
+        </h1>
+        
+        <a href="https://www.sciencedirect.com/science/article/abs/pii/S0263224125001757">https://www.sciencedirect.com/science/article/abs/pii/S0263224125001757</a>
+        <img src="publications cover.png" style="height: 30vh; width: 55vh;">
+
+          </div>
+        </div>
+
+        <script>
+           
+        const cards = document.querySelectorAll('.card');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        cards.forEach(card => observer.observe(card));
+    </script>
+          <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-left">
+                    <a href="https://www.icmr.gov.in/" target="_blank"><img src="icmr.jpeg" alt="NINJA Logo" class="footer-logo"></a>
+                    <a href="https://uiet.puchd.ac.in/" target="_blank"><img src="uiet.jpeg" alt="NINJA Logo" class="footer-logo"></a>
+                    <a href="https://gmch.gov.in/" target="_blank"><img src="gmch.png" alt="NINJA Logo" class="footer-logo"></a>
+                    <a href="https://mcmdavcwchd.edu.in/" target="_blank"><img src="mcm.jpeg" alt="NINJA Logo" class="footer-logo"></a>
+    
+                    <p class="footer-description">
+                        NINJA is an AI-powered research project for non-invasive jaundice assessment in newborns using deep learning.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#container6">Predict</a></li>
+                        <li><a href="#">Publications</a></li>
+                        <li><a href="#">Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>Email: contact@ninja.org</li>
+                        <li>Phone: +91 000000000</li>
+                        <li>India</li>
+                        Created by Ashmeet Kaur
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <hr />
+                <p>© 2025 NINJA. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+</body>
