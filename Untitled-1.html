@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>NINJA</title>
+    <link href="ninja pt 2.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="ninja.js" type="text/javascript"></script>
+
+    <style>
+        /* 🔹 Fade-in effect for top section */
+        .newcontainer {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+        }
+
+        .newcontainer.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="ninja logo pt2.png" alt="Logo">
+            </div>
+            <div class="logoIMG">
+                <img src="logo img.jpg" alt="Logo">
+            </div>
+
+            <ul class="nav-list" id="navList">
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="C:\Users\Ashmeet\Documents\GitHub\NINJA-PT2\aboutus.html" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="#container6" class="nav-link">Predict</a></li>
+                <li class="nav-item"><a href="publications.html" class="nav-link">Publications</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
+                <li class="nav-item"><a href="ourteam.html" class="nav-link">Our Team</a></li>
+            </ul>
+
+            <button class="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
+                Our Database
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Get the menu button and nav-list
+        const menuButton = document.querySelector('.menu-button');
+        const navList = document.getElementById('navList');
+
+        // Add click event listener to toggle the visibility of the nav items
+        if (menuButton) {
+            menuButton.addEventListener('click', function () {
+                navList.classList.toggle('show');
+            });
+        }
+
+        // 🔹 Fade-in top section on load
+        window.addEventListener("load", () => {
+            document.querySelector(".newcontainer").classList.add("show");
+        });
+    </script>
+
+    <div class="newcontainer">
+        <img src="adj photo.jpg" style="width: 100%; top: 30%; padding-top: 10%; height: 70vh;">
+    </div>
+
+    <div class="container3" id="container3">
+        <h1 style="text-align: center;">NINJA: NON INVASIVE NEONATE JAUNDICE ESTIMATION</h1>
+        <p>NINJA (Non-invasive Neonate Jaundice Assessment) is an AI-powered research initiative aimed at developing a safe, contactless method for estimating bilirubin levels in newborns using skin images. Traditional methods for jaundice detection often require invasive blood tests, which can be stressful for both infants and caregivers. NINJA leverages deep learning techniques to analyze visual cues from skin images and predict Total Serum Bilirubin (TSB) levels accurately. By integrating advanced AI with accessible imaging, the project aspires to support early diagnosis and reduce the dependence on invasive procedures, especially in resource-limited settings.</p>
+        
+        <div class="wrapper">
+            <div class="container4">
+                <img src="face clr.jpg">
+                <span class="num" data-val="2000">0000</span>
+                <span class="text">Face</span>
+            </div>
+
+            <div class="container4">
+                <img src="strnum clr.jpg">
+                <span class="num" data-val="2000">0000</span>
+                <span class="text">Sternum</span>
+            </div>
+
+            <div class="container4">
+                <img src="lgo cpy clr.jpg">
+                <span class="num" data-val="2000">0000</span>
+                <span class="text">Full body</span>
+            </div>
+        </div>
+        <h1 style="text-align: center;">A GLIMPSE OF OUR DATASET</h1>
+    </div>
+
+    <script src="js.js"></script>
+
+    <div class="containers">
+        <div class="slider">
+            <div class="box1"></div>
+            <div class="box2"></div>
+            <div class="box3"></div>
+            <div class="box4"></div>
+            <div class="box5"></div>
+            <div class="box6"></div>
+            <div class="box7"></div>
+        </div>
+    </div>
+
+    <div id="test"></div>
+
+    <!-- Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        function rotate() {
+            var lastChild = $('.slider div:last-child').clone();
+            $('.slider div').removeClass('firstSlide')
+            $('.slider div:last-child').remove();
+            $('.slider').prepend(lastChild)
+            $(lastChild).addClass('firstSlide')
+        }
+
+        window.setInterval(function () {
+            rotate()
+        }, 4000);
+    </script>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <a href="https://www.icmr.gov.in/" target="_blank"><img src="icmr.jpeg" alt="NINJA Logo" class="footer-logo"></a>
+                <a href="https://uiet.puchd.ac.in/" target="_blank"><img src="uiet.jpeg" alt="NINJA Logo" class="footer-logo"></a>
+                <a href="https://gmch.gov.in/" target="_blank"><img src="gmch.png" alt="NINJA Logo" class="footer-logo"></a>
+                <a href="https://mcmdavcwchd.edu.in/" target="_blank"><img src="mcm.jpeg" alt="NINJA Logo" class="footer-logo"></a>
+
+                <p class="footer-description">
+                    NINJA is an AI-powered research project for non-invasive jaundice assessment in newborns using deep learning.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#container6">Predict</a></li>
+                    <li><a href="#">Publications</a></li>
+                    <li><a href="#">Products</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Email: contact@ninja.org</li>
+                    <li>Phone: +91 000000000</li>
+                    <li>India</li>
+                    Created by Ashmeet Kaur
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <hr />
+            <p>© 2025 NINJA. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
