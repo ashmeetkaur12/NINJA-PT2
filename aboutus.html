@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>NINJA</title>
+    <link
+        href="ninja pt 2.css"
+        rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="ninja logo pt2.png" alt="Logo">
+            </div>
+            <div class="logoIMG">
+                <img src="logo img.jpg" alt="Logo">
+            </div>
+
+
+            <ul class="nav-list" id="navList">
+                <li class="nav-item"><a href="Untitled-1.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="#container6" class="nav-link">Predict</a></li>
+                <li class="nav-item"><a href="publications.html" class="nav-link">Publications</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
+                <li class="nav-item"><a href="ourteam.html" class="nav-link">Our Team</a></li>
+
+
+            </ul>
+            <button class="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
+                Our Database
+            </button>
+        </div>
+    </div>
+    <div class="container3" style="top: 30%;padding-top: 10%">
+        <div class="card">
+        <h1 style="text-align: center;">OVERVIEW OF THE PROBLEM
+        </h1>
+        <p>Neonatal jaundice affects over 60% of newborns worldwide and occurs due to the accumulation of bilirubin in the bloodstream. Timely diagnosis is crucial, as untreated jaundice can lead to conditions like kernicterus or long-term neurological damage.</p>
+        <img src="baby 1.jpg" style="height: 30vh; width: 55vh;">
+        <p>Existing diagnostic methods require invasive blood sampling, often involving multiple pricks, causing discomfort to the infant and requiring clinical infrastructure that may not always be available in low-resource settings.</p>
+          </div>
+          <div class="card">
+        <h1 style="text-align: center;">AIM OF THE PROJECT
+            </h1>
+            <p>The NINJA project is committed to create an AI-driven, non-invasive, and accessible system to estimate bilirubin levels through simple skin images of neonates. This approach is intended to reduce the need for invasive testing and expand early screening capabilities to even the most remote healthcare centers.</p>
+            <img src="baby 2.jpg" style="height: 30vh; width: 75vh;">  
+        </div>
+        <div class="card">
+            <h1 style="text-align: center;">AI-BASED APPROACH
+            </h1>  
+            <p>
+                NINJA applies advanced deep learning techniques, particularly convolutional neural networks like ResNet, trained on skin images to estimate Total Serum Bilirubin (TSB) levels. 
+            </p>
+            <img src="Ethical Approval 1.png" style="height: 30vh; width: 95vh;">
+            <p>
+                The model processes image features such as skin tone, lighting variations, and texture patterns to predict bilirubin levels accurately, offering a real-time and pain-free diagnostic tool.
+            </p>
+        </div>
+        <div class="card">
+            <h1 style="text-align: center">FUNDING SOURCE
+            </h1> 
+            <P>This research is funded by the Indian Council of Medical Research (ICMR), a premier national agency supporting biomedical innovation across India.</P>
+            <img src="icmr buil.jpg" style="height: 50vh; width: 95vh;">
+            </div>
+        <div class="card">
+            <h1 style="text-align: center;">COLLABORATING INSTITUITIONS
+            </h1> 
+            <ul>
+                <li><p>MCM DAV College for Women Sector 36-A, Chandigarh</p></li>
+                <img src="mcm building.webp" style="height: 30vh; width: 55vh;">
+                <li><p>Government Medical College and Hospital (GMCH-32), Chandigarh</p></li>
+                <img src="GMCH-sector-32-hospital-chandigarh.jpg" style="height: 30vh; width: 55vh;">
+                <li><p>University Institute of Engineering and Technology (UIET), Panjab University, Chandigarh</p></li>
+                <img src="uiet buil.jpg" style="height: 30vh; width: 55vh;">
+            </ul>
+            </div>
+         
+            <div class="card">
+            <h1 style="text-align: center;">ETHICAL GUIDELINES
+            </h1> 
+                <p>1. All image data is collected after obtaining informed consent from parents or guardians.</p>
+                <p>2. Faces and any identifiable features are anonymized before training.</p>
+                <p>3. Data is securely stored in the cloud using Base64 encoding.</p>
+                <p>4. The project adheres to the biomedical ethical standards laid out by ICMR and institutional review boards.</p>
+        </div>
+        </div>
+
+        <script>
+           
+        const cards = document.querySelectorAll('.card');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        cards.forEach(card => observer.observe(card));
+    </script>
+      
+      
+</body>
