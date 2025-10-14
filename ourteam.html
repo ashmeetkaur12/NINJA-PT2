@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <link rel="stylesheet" href="ninja pt 2.css">
+  <title>Hover Effect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <style>
+    /* 🔹 fade-in on scroll */
+    .box {
+      opacity: 0;                 /* hidden initially */
+      transition: opacity 1s ease-in;
+    }
+
+    .box.show {
+      opacity: 1;                
+     /* visible after scrolling */
+    }
+    .containert {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;          /* space between cards */
+    max-width: 1200px;  /* keeps content centered */
+    margin: 0 auto;     /* center the whole section */
+    padding: 40px 20px;}
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+    <div class="navbar">
+      <div class="logo">
+        <img src="ninja logo pt2.png" alt="Logo">
+      </div>
+      <div class="logoIMG">
+        <img src="logo img.jpg" alt="Logo">
+      </div>
+
+      <ul class="nav-list" id="navList">
+        <li class="nav-item"><a href="Untitled-1.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
+        <li class="nav-item"><a href="#container6" class="nav-link">Predict</a></li>
+        <li class="nav-item"><a href="publications.html" class="nav-link">Publications</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
+        <li class="nav-item"><a href="ourteam.html" class="nav-link">Our Team</a></li>
+      </ul>
+
+      <button class="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
+        Our Database
+      </button>
+    </div>
+  </div>
+
+  <h1 style="text-align: center;top: 30%; padding-top: 10%; color: #04629b;">OUR TEAM</h1>
+  
+  <div class="containert">
+    <div class="box">
+      <div class="circle">
+        <div class="img-info">
+          <div class="img"><img src="navdeep maam.png" alt=""></div>
+          <div class="info" style="right: 10%;"><h3><b>Dr. Navdeep Kaur</b><br>(Assistant Professor)  </h3><p><br>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="box"><div class="circle"><div class="img-info"><div class="img"><img src="suksham jain.jpg" alt=""></div><div class="info" style="right: 10%;"><h3><b>Dr. Suksham Jain</b><br> (Professor)</h3><p>Government Medical College & Hospital, Sector 32, Chandigarh</p></div></div></div></div>
+
+    <div class="box"><div class="circle"><div class="img-info"><div class="img"><img src="ajay mittal.png" alt=""></div><div class="info" style="right: 10%;"><h3><b>Dr. Ajay Mittal</b><br> (Professor)</h3><p>UIET, Panjab University, Sector 25, Chandigarh</p></div></div></div></div>
+    <div class="box"><div class="circle"><div class="img-info"><div class="img"><img src="mandeep maam.png" alt=""></div><div class="info" style="right: 10%;"><h3><b>Dr. Mandeep Kaur</b><br> (Assistant Professor)</h3><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div></div></div></div>
+    <div class="box"><div class="circle"><div class="img-info"><div class="img"><img src="deepak chawla.png" alt=""></div><div class="info" style="right: 10%;"><h3><b>Dr. Deepak Chawla</b><br> (Professor)</h3><p>Government Medical College & Hospital, Sector 32, Chandigarh</p></div></div></div></div>
+
+    <div class="box"><div class="circle"><div class="img-info"><div class="img"><img src="preeti aggarwal.JPG" alt=""></div><div class="info" style="right: 10%;"><h3><b>Dr. Preeti Aggarwal</b><br> (Assistant Professor)</h3><br><p>UIET, Panjab University, Sector 25, Chandigarh</p></div></div></div></div>
+    <div class="box"><div class="circle"><div class="img-info"><div class="img"><img src="sonali.jpg" alt=""></div><div class="info" style="right: 16%;"><h3><b>Ms. Sonali Mehndiratta</b><br> (Project Technical Support- III)</h3><br><BR><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div></div></div></div>
+    <div class="box"><div class="circle"><div class="img-info"><div class="img"><img src="bipan.jpg" alt=""></div><div class="info" style="right: 16%;"><h3><b>Mr. Bipan Tiwari</b><br> (Project Technical Support- III)</h3><br><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div></div></div></div>
+    <div class="box"><div class="circle"><div class="img-info"><div class="img"><img src="harveen.jpg" alt=""></div><div class="info" style="right: 12%;"><h3><b>Ms. Harveen Kaur</b><br> (Project Technical Support- I)</h3><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div></div></div></div>
+  </div>
+
+  <script>
+    // Intersection Observer for gradual fade-in
+    const boxes = document.querySelectorAll('.box');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target); // ensures each fades only once
+        }
+      });
+    }, { threshold: 0.1 });
+
+    boxes.forEach(box => {
+      observer.observe(box);
+    });
+  </script>
+</body>
+</html>
