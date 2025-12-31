@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<head>
+  <title>NINJA</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #04629b, #ffffff);
+    }
+
+    .card {
+      background: #ffffff;
+      width: 430px;
+      padding: 32px;
+      border-radius: 22px;
+      box-shadow: 0 20px 45px rgba(4, 98, 155, 0.25);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .icon {
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 18px;
+      background: #04629b;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      color: #fff;
+      box-shadow: 0 10px 22px rgba(4, 98, 155, 0.45);
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #04629b;
+      margin-bottom: 8px;
+    }
+
+    p.subtitle {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 26px;
+    }
+
+    .upload-box {
+      border: 2px dashed #04629b;
+      border-radius: 16px;
+      padding: 26px;
+      margin-bottom: 26px;
+      transition: 0.3s ease;
+      background: #f5fbff;
+    }
+
+    .upload-box:hover {
+      background: #e9f5ff;
+    }
+
+    .upload-box input[type="file"] {
+      display: none;
+    }
+
+    .upload-label {
+      cursor: pointer;
+      display: inline-block;
+      color: #04629b;
+      font-weight: 600;
+    }
+
+    .upload-text {
+      font-size: 14px;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      background: #04629b;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 10px 20px rgba(4, 98, 155, 0.45);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(4, 98, 155, 0.55);
+    }
+
+    .result {
+      margin-top: 22px;
+      padding: 14px;
+      border-radius: 12px;
+      background: #e9f5ff;
+      color: #04629b;
+      font-weight: 600;
+      display: none;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #777;
+      margin-top: 18px;
+      line-height: 1.5;
+    }
+
+    footer {
+      margin-top: 24px;
+      font-size: 11px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">🩸</div>
+    <h1>Bilirubin Checker</h1>
+    <p class="subtitle">Upload an image to check bilirubin level</p>
+
+    <div class="upload-box">
+      <label class="upload-label" for="imageUpload">📷 Choose Image from Computer</label>
+      <input type="file" id="imageUpload" accept="image/*" />
+      <div class="upload-text">Supported formats: JPG, PNG</div>
+    </div>
+
+    <button class="btn" onclick="showResult()">Check Bilirubin Level</button>
+
+    <div class="result" id="resultBox">
+      ✅ Your bilirubin lies in the <strong>normal range</strong>.
+    </div>
+
+  </div>
+
+  <script>
+    function showResult() {
+      document.getElementById('resultBox').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
