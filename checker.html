@@ -1,230 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NINJA – Bilirubin Checker</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NINJA – Bilirubin Checker</title>
 
-  <!-- External CSS (if exists) -->
-  <link rel="stylesheet" href="ninja pt 2.css">
+<!-- Google Fonts (matching your CSS intent) -->
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=PT+Serif&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+<style>
+/* ---------- GLOBAL ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #04629b, #ffffff);
-    }
+body {
+  font-family: 'HK Grotesk', 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #04629b, #ffffff);
+  min-height: 100vh;
+}
 
-    /* ---------------- NAVBAR ---------------- */
-    .container {
-      width: 100%;
-    }
+/* ---------- NAVBAR ---------- */
+.navbar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 25px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
 
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 40px;
-      background: #ffffff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+.logo img {
+  width: 160px;
+}
 
-    .logo img,
-    .logoIMG img {
-      height: 45px;
-    }
+.nav-list {
+  list-style: none;
+  display: flex;
+  margin-left: 30px;
+  font-family: 'Oswald', sans-serif;
+}
 
-    .nav-list {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
+.nav-item {
+  margin-right: 20px;
+}
 
-    .nav-link {
-      text-decoration: none;
-      color: #04629b;
-      font-weight: 600;
-    }
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+}
 
-    .nav-link:hover {
-      text-decoration: underline;
-    }
+.nav-link:hover {
+  color: #04629b;
+  font-weight: bold;
+}
 
-    .button {
-      padding: 10px 16px;
-      background: #04629b;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-    }
+.button {
+  margin-left: auto;
+  background: #fff;
+  border: 2px solid #000;
+  padding: 10px 18px;
+  font-size: 18px;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+}
 
-    .button:hover {
-      background: #034f7a;
-    }
+.button:hover {
+  background: #04629b;
+  color: #fff;
+}
 
-    /* ------------- CENTER CARD ------------- */
-    .page-center {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 80px 20px;
-    }
+/* ---------- CENTER AREA ---------- */
+.page-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 140px; /* space for navbar */
+}
 
-    .card {
-      background: #ffffff;
-      width: 430px;
-      padding: 32px;
-      border-radius: 22px;
-      box-shadow: 0 20px 45px rgba(4, 98, 155, 0.25);
-      text-align: center;
-      animation: fadeIn 1s ease-in-out;
-    }
+/* ---------- CARD ---------- */
+.card {
+  background: #fff;
+  width: 420px;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(4,98,155,0.25);
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(25px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    .icon {
-      width: 82px;
-      height: 82px;
-      margin: 0 auto 18px;
-      background: #04629b;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-      color: #fff;
-      box-shadow: 0 10px 22px rgba(4, 98, 155, 0.45);
-    }
+.icon {
+  width: 80px;
+  height: 80px;
+  background: #04629b;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  margin: 0 auto 15px;
+}
 
-    h1 {
-      font-size: 26px;
-      color: #04629b;
-      margin-bottom: 8px;
-    }
+h1 {
+  color: #04629b;
+  font-family: 'Oswald', sans-serif;
+}
 
-    .subtitle {
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 26px;
-    }
+.subtitle {
+  margin: 10px 0 25px;
+  color: #555;
+}
 
-    .upload-box {
-      border: 2px dashed #04629b;
-      border-radius: 16px;
-      padding: 26px;
-      margin-bottom: 26px;
-      background: #f5fbff;
-    }
+/* ---------- UPLOAD ---------- */
+.upload-box {
+  border: 2px dashed #04629b;
+  border-radius: 14px;
+  padding: 22px;
+  background: #f5fbff;
+  margin-bottom: 25px;
+}
 
-    .upload-box input {
-      display: none;
-    }
+.upload-box input {
+  display: none;
+}
 
-    .upload-label {
-      cursor: pointer;
-      color: #04629b;
-      font-weight: 600;
-    }
+.upload-label {
+  cursor: pointer;
+  color: #04629b;
+  font-weight: 600;
+}
 
-    .upload-text {
-      font-size: 14px;
-      color: #555;
-      margin-top: 10px;
-    }
+/* ---------- BUTTON ---------- */
+.btn {
+  width: 100%;
+  padding: 14px;
+  background: #04629b;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-family: 'Oswald', sans-serif;
+  cursor: pointer;
+}
 
-    .btn {
-      width: 100%;
-      padding: 14px;
-      font-size: 16px;
-      font-weight: 600;
-      color: #fff;
-      border: none;
-      border-radius: 14px;
-      background: #04629b;
-      cursor: pointer;
-      box-shadow: 0 10px 20px rgba(4, 98, 155, 0.45);
-    }
+.btn:hover {
+  background: #034f7a;
+}
 
-    .btn:hover {
-      background: #034f7a;
-    }
-
-    .result {
-      margin-top: 22px;
-      padding: 14px;
-      border-radius: 12px;
-      background: #e9f5ff;
-      color: #04629b;
-      font-weight: 600;
-      display: none;
-    }
-  </style>
+/* ---------- RESULT ---------- */
+.result {
+  display: none;
+  margin-top: 20px;
+  padding: 14px;
+  background: #e9f5ff;
+  border-radius: 12px;
+  color: #04629b;
+  font-weight: bold;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <div class="container">
-    <div class="navbar">
-      <div class="logo">
-        <img src="ninja logo pt2.png" alt="Ninja Logo">
-      </div>
-
-      <ul class="nav-list">
-        <li><a href="Untitled-1.html" class="nav-link">Home</a></li>
-        <li><a href="aboutus.html" class="nav-link">About Us</a></li>
-        <li><a href="#" class="nav-link">Predict</a></li>
-        <li><a href="publications.html" class="nav-link">Publications</a></li>
-        <li><a href="ourteam.html" class="nav-link">Our Team</a></li>
-      </ul>
-
-      <button class="button"
-        onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform','_blank')">
-        Our Database
-      </button>
-    </div>
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="logo">
+    <img src="ninja logo pt2.png" alt="Ninja Logo">
   </div>
 
-  <!-- BILIRUBIN CARD -->
-  <div class="page-center">
-    <div class="card">
-      <div class="icon">🩸</div>
-      <h1>Bilirubin Checker</h1>
-      <p class="subtitle">Upload an image to check bilirubin level</p>
+  <ul class="nav-list">
+    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Predict</a></li>
+  </ul>
 
-      <div class="upload-box">
-        <label class="upload-label" for="imageUpload">📷 Choose Image from Computer</label>
-        <input type="file" id="imageUpload" accept="image/*">
-        <div class="upload-text">Supported formats: JPG, PNG</div>
-      </div>
+  <button class="button"
+    onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform','_blank')">
+    Our Database
+  </button>
+</div>
 
-      <button class="btn" onclick="showResult()">Check Bilirubin Level</button>
+<!-- CARD -->
+<div class="page-center">
+  <div class="card">
+    <div class="icon">🩸</div>
+    <h1>Bilirubin Checker</h1>
+    <p class="subtitle">Upload an image to check bilirubin level</p>
 
-      <div class="result" id="resultBox">
-        ✅ Your bilirubin lies in the <strong>normal range</strong>.
-      </div>
+    <div class="upload-box">
+      <label class="upload-label" for="imageUpload">📷 Choose Image from Computer</label>
+      <input type="file" id="imageUpload" accept="image/*">
+    </div>
+
+    <button class="btn" onclick="showResult()">Check Bilirubin Level</button>
+
+    <div class="result" id="resultBox">
+      ✅ Your bilirubin lies in the <strong>normal range</strong>.
     </div>
   </div>
+</div>
 
-  <script>
-    function showResult() {
-      document.getElementById("resultBox").style.display = "block";
-    }
-  </script>
+<script>
+function showResult() {
+  document.getElementById("resultBox").style.display = "block";
+}
+</script>
 
 </body>
 </html>
