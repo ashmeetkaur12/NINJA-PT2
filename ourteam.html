@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <link rel="stylesheet" href="ninja pt 2.css">
-  <title>Hover Effect</title>
+  <title>Our Team – NINJA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
@@ -13,26 +12,159 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
   <style>
-    /* 🔹 fade-in on scroll */
+    /* ── fade-in on scroll ── */
     .box {
-      opacity: 0;                 /* hidden initially */
+      opacity: 0;
       transition: opacity 1s ease-in;
     }
-
     .box.show {
-      opacity: 1;                
-     /* visible after scrolling */
+      opacity: 1;
     }
+
+    /* ── team grid ── */
     .containert {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;          /* space between cards */
-    max-width: 1200px;  /* keeps content centered */
-    margin: 0 auto;     /* center the whole section */
-    padding: 40px 20px;}
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+      justify-items: center;
+    }
+
+    /* center last 2 items (columns 1 and 3 of a 3-col grid) */
+    .containert .box:nth-last-child(2) {
+      grid-column: 1 / 2;
+      justify-self: end;
+    }
+    .containert .box:nth-last-child(1) {
+      grid-column: 3 / 4;
+      justify-self: start;
+    }
+
+    /* ── page layout so footer sticks to bottom ── */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .containert {
+      flex: 1;
+    }
+
+    /* ── FOOTER FIX ── 
+       Overrides position:absolute on .footer-container from ninja pt 2.css */
+    .footer {
+      background-color: #111;
+      color: #fff;
+      padding: 40px 20px 20px;
+      font-family: 'Montserrat', sans-serif;
+      margin-top: 0;
+      clear: both;
+      position: static !important;
+      height: auto !important;
+    }
+
+    .footer .footer-container {
+      position: static !important;
+      bottom: auto !important;
+      left: auto !important;
+      right: auto !important;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+      gap: 20px;
+    }
+
+    .footer-left,
+    .footer-section {
+      flex: 1 1 200px;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo {
+      width: 60px;
+      height: 50px;
+      margin-right: 8px;
+      margin-bottom: 15px;
+      object-fit: contain;
+      vertical-align: middle;
+    }
+
+    .footer-description {
+      font-size: 14px;
+      color: #ccc;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .footer-section h3 {
+      color: #fff;
+      margin-bottom: 12px;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section ul li {
+      color: #ccc;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .footer-section ul li a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-section ul li a:hover {
+      color: #fff;
+    }
+
+    .footer-credit {
+      color: #aaa;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      margin-right: 14px;
+      color: #ccc;
+      font-size: 18px;
+      transition: color 0.2s;
+    }
+
+    .social-icons a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 13px;
+      color: #aaa;
+      margin-top: 30px;
+    }
+
+    .footer-bottom hr {
+      border: none;
+      border-top: 1px solid #333;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
+
+  <!-- NAVBAR -->
   <div class="container" id="container">
     <div class="navbar">
       <div class="logo">
@@ -41,60 +173,159 @@
       <div class="logoIMG">
         <img src="logo img.jpg" alt="Logo">
       </div>
-
       <ul class="nav-list" id="navList">
         <li class="nav-item"><a href="Untitled-1.html" class="nav-link">Home</a></li>
         <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
-        <li class="nav-item"><a href="#container6" class="nav-link">Predict</a></li>
+        <li class="nav-item"><a href="predict.html" class="nav-link">Predict</a></li>
         <li class="nav-item"><a href="publications.html" class="nav-link">Publications</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
-        <li class="nav-item"><a href="ourteam.html" class="nav-link">Our Team</a></li>
+        <li class="nav-item"><a href="ourteam.html" class="nav-link" style="color:#04629b; font-weight:bold;">Our Team</a></li>
       </ul>
-
       <button class="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
         Our Database
       </button>
     </div>
   </div>
 
-  <h1 style="text-align: center;top: 30%; padding-top: 10%; color: #04629b;">OUR TEAM</h1>
-  
+  <!-- HEADING -->
+  <h1 style="text-align:center; padding-top:120px; padding-bottom:10px; color:#04629b; font-family:'Oswald',sans-serif; letter-spacing:2px;">OUR TEAM</h1>
+
+  <!-- TEAM GRID -->
   <div class="containert">
     <div class="box">
-      <div class="circle">
-        <div class="img-info">
-          <div class="img"><img src="navdeep maam.png" alt=""></div>
-          <div class="info" style="right: 10%;"><h3><b>Dr. Navdeep Kaur</b><br>(Assistant Professor)  </h3><p><br>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
+      <div class="circle"><div class="img-info">
+        <div class="img"><img src="navdeep maam.png" alt=""></div>
+        <div class="info" style="right:10%;"><h3><b>Dr. Navdeep Kaur</b><br>(Assistant Professor)</h3><p><br>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
+      </div></div>
+    </div>
+
+    <div class="box">
+      <div class="circle"><div class="img-info">
+        <div class="img"><img src="suksham jain.jpg" alt=""></div>
+        <div class="info" style="right:10%;"><h3><b>Dr. Suksham Jain</b><br>(Professor)</h3><p>Government Medical College & Hospital, Sector 32, Chandigarh</p></div>
+      </div></div>
+    </div>
+
+    <div class="box">
+      <div class="circle"><div class="img-info">
+        <div class="img"><img src="Ajay Sir.png" alt=""></div>
+        <div class="info" style="right:10%;"><h3><b>Dr. Ajay Mittal</b><br>(Professor)</h3><p>UIET, Panjab University, Sector 25, Chandigarh</p></div>
+      </div></div>
+    </div>
+
+    <div class="box">
+      <div class="circle"><div class="img-info">
+        <div class="img"><img src="mandeep maam.png" alt=""></div>
+        <div class="info" style="right:10%;"><h3><b>Dr. Mandeep Kaur</b><br>(Assistant Professor)</h3><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
+      </div></div>
+    </div>
+
+    <div class="box">
+      <div class="circle"><div class="img-info">
+        <div class="img"><img src="deepak chawla.png" alt=""></div>
+        <div class="info" style="right:10%;"><h3><b>Dr. Deepak Chawla</b><br>(Professor)</h3><p>Government Medical College & Hospital, Sector 32, Chandigarh</p></div>
+      </div></div>
+    </div>
+
+    <div class="box">
+      <div class="circle"><div class="img-info">
+        <div class="img"><img src="preeti aggarwal.JPG" alt=""></div>
+        <div class="info" style="right:10%;"><h3><b>Dr. Preeti Aggarwal</b><br>(Assistant Professor)</h3><br><p>UIET, Panjab University, Sector 25, Chandigarh</p></div>
+      </div></div>
+    </div>
+
+    <div class="box">
+      <div class="circle"><div class="img-info">
+        <div class="img"><img src="sonali.jpg" alt=""></div>
+        <div class="info" style="right:16%;"><h3><b>Ms. Sonali Mehndiratta</b><br>(Project Technical Support- III)</h3><br><br><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
+      </div></div>
+    </div>
+
+    <div class="box">
+      <div class="circle"><div class="img-info">
+        <div class="img"><img src="bipan.jpg" alt=""></div>
+        <div class="info" style="right:16%;"><h3><b>Mr. Bipan Tiwari</b><br>(Project Technical Support- III)</h3><br><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
+      </div></div>
+    </div>
+
+    <div class="box">
+      <div class="circle"><div class="img-info">
+        <div class="img"><img src="harveen.jpg" alt=""></div>
+        <div class="info" style="right:12%;"><h3><b>Ms. Harveen Kaur</b><br>(Project Technical Support- I)</h3><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
+      </div></div>
+    </div>
+
+    <div class="box">
+      <div class="circle"><div class="img-info">
+        <div class="img"><img src="harveen.jpg" alt=""></div>
+        <div class="info" style="right:12%;"><h3><b>Ms. Ritu Rani</b><br>(Project Nurse- III)</h3><p>Government Medical College &amp; Hospital, Sector 32, Chandigarh</p></div>
+      </div></div>
+    </div>
+
+    <div class="box">
+      <div class="circle"><div class="img-info">
+        <div class="img"><img src="harveen.jpg" alt=""></div>
+        <div class="info" style="right:12%;"><h3><b>Ms. Reena</b><br>(Office Helper)</h3><p>Government Medical College &amp; Hospital, Sector 32, Chandigarh</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <a href="https://www.icmr.gov.in/" target="_blank"><img src="icmr.jpeg" alt="ICMR Logo" class="footer-logo"></a>
+        <a href="https://uiet.puchd.ac.in/" target="_blank"><img src="uiet.jpeg" alt="UIET Logo" class="footer-logo"></a>
+        <a href="https://gmch.gov.in/" target="_blank"><img src="gmch.png" alt="GMCH Logo" class="footer-logo"></a>
+        <a href="https://mcmdavcwchd.edu.in/" target="_blank"><img src="mcm.jpeg" alt="MCM Logo" class="footer-logo"></a>
+        <p class="footer-description">NINJA is an AI-powered research project for non-invasive jaundice assessment in newborns using deep learning.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="Untitled-1.html">Home</a></li>
+          <li><a href="predict.html">Predict</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="#">Products</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <ul>
+          <li>Email: contact@ninja.org</li>
+          <li>Phone: +91 000000000</li>
+          <li>India</li>
+        </ul>
+        <p class="footer-credit">Created by Ashmeet Kaur</p>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
         </div>
       </div>
     </div>
-    <div class="box"><div class="circle"><div class="img-info"><div class="img"><img src="suksham jain.jpg" alt=""></div><div class="info" style="right: 10%;"><h3><b>Dr. Suksham Jain</b><br> (Professor)</h3><p>Government Medical College & Hospital, Sector 32, Chandigarh</p></div></div></div></div>
-
-    <div class="box"><div class="circle"><div class="img-info"><div class="img"><img src="ajay mittal.png" alt=""></div><div class="info" style="right: 10%;"><h3><b>Dr. Ajay Mittal</b><br> (Professor)</h3><p>UIET, Panjab University, Sector 25, Chandigarh</p></div></div></div></div>
-    <div class="box"><div class="circle"><div class="img-info"><div class="img"><img src="mandeep maam.png" alt=""></div><div class="info" style="right: 10%;"><h3><b>Dr. Mandeep Kaur</b><br> (Assistant Professor)</h3><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div></div></div></div>
-    <div class="box"><div class="circle"><div class="img-info"><div class="img"><img src="deepak chawla.png" alt=""></div><div class="info" style="right: 10%;"><h3><b>Dr. Deepak Chawla</b><br> (Professor)</h3><p>Government Medical College & Hospital, Sector 32, Chandigarh</p></div></div></div></div>
-
-    <div class="box"><div class="circle"><div class="img-info"><div class="img"><img src="preeti aggarwal.JPG" alt=""></div><div class="info" style="right: 10%;"><h3><b>Dr. Preeti Aggarwal</b><br> (Assistant Professor)</h3><br><p>UIET, Panjab University, Sector 25, Chandigarh</p></div></div></div></div>
-    <div class="box"><div class="circle"><div class="img-info"><div class="img"><img src="sonali.jpg" alt=""></div><div class="info" style="right: 16%;"><h3><b>Ms. Sonali Mehndiratta</b><br> (Project Technical Support- III)</h3><br><BR><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div></div></div></div>
-    <div class="box"><div class="circle"><div class="img-info"><div class="img"><img src="bipan.jpg" alt=""></div><div class="info" style="right: 16%;"><h3><b>Mr. Bipan Tiwari</b><br> (Project Technical Support- III)</h3><br><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div></div></div></div>
-    <div class="box"><div class="circle"><div class="img-info"><div class="img"><img src="harveen.jpg" alt=""></div><div class="info" style="right: 12%;"><h3><b>Ms. Harveen Kaur</b><br> (Project Technical Support- I)</h3><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div></div></div></div>
-  </div>
+    <div class="footer-bottom">
+      <hr>
+      <p>© 2025 NINJA. All Rights Reserved.</p>
+    </div>
+  </footer>
 
   <script>
-    // Intersection Observer for gradual fade-in
     const boxes = document.querySelectorAll('.box');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('show');
-          observer.unobserve(entry.target); // ensures each fades only once
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
 
-    boxes.forEach(box => {
-      observer.observe(box);
-    });
+    boxes.forEach(box => observer.observe(box));
   </script>
 </body>
 </html>
