@@ -3,24 +3,130 @@
 
 <head>
     <title>NINJA</title>
-    <link
-        href="ninja pt 2.css"
-        rel="stylesheet" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="ninja pt 2.css">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+            .container3 {
+            height: auto !important;
+            min-height: unset !important;
+            padding-bottom: 40px;
+        }
+        .footer {
+            background-color: #111;
+            color: #fff;
+            padding: 40px 20px 20px;
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 0;
+            clear: both;
+            position: static !important; 
+            z-index: 1;
+            height: auto !important;
+        }
+
+        
+        .footer .footer-container {
+            position: static !important;
+            bottom: auto !important;
+            left: auto !important;
+            right: auto !important;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: auto;
+            gap: 20px;
+        }
+
+        .footer-left,
+        .footer-section {
+            flex: 1 1 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo {
+            width: 60px;
+            height: 50px;
+            margin-right: 8px;
+            margin-bottom: 15px;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
+        .footer-description {
+            font-size: 14px;
+            color: #ccc;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-section h3 {
+            color: #fff;
+            margin-bottom: 12px;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            color: #ccc;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-credit {
+            color: #aaa;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            margin-right: 14px;
+            color: #ccc;
+            font-size: 18px;
+            transition: color 0.2s;
+        }
+
+        .social-icons a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 13px;
+            color: #aaa;
+            margin-top: 30px;
+        }
+
+        .footer-bottom hr {
+            border: none;
+            border-top: 1px solid #333;
+            margin-bottom: 12px;
+        }
+    </style>
 </head>
+
 <body>
     <div class="container" id="container">
         <div class="navbar">
@@ -30,57 +136,45 @@
             <div class="logoIMG">
                 <img src="logo img.jpg" alt="Logo">
             </div>
-
-
             <ul class="nav-list" id="navList">
                 <li class="nav-item"><a href="Untitled-1.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">About Us</a></li>
-                <li class="nav-item"><a href="#container6" class="nav-link">Predict</a></li>
+                <li class="nav-item"><a href="predict.html" class="nav-link">Predict</a></li>
                 <li class="nav-item"><a href="publications.html" class="nav-link">Publications</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
                 <li class="nav-item"><a href="ourteam.html" class="nav-link">Our Team</a></li>
-
-
             </ul>
             <button class="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
                 Our Database
             </button>
         </div>
     </div>
-    <div class="container3" style="top: 30%;padding-top: 10%">
+
+    <div class="container3" style="top: 30%; padding-top: 10%">
         <div class="card">
-        <h1 style="text-align: center;">OVERVIEW OF THE PROBLEM
-        </h1>
-        <p>Neonatal jaundice affects over 60% of newborns worldwide and occurs due to the accumulation of bilirubin in the bloodstream. Timely diagnosis is crucial, as untreated jaundice can lead to conditions like kernicterus or long-term neurological damage.</p>
-        <img src="baby 1.jpg" style="height: 30vh; width: 55vh;">
-        <p>Existing diagnostic methods require invasive blood sampling, often involving multiple pricks, causing discomfort to the infant and requiring clinical infrastructure that may not always be available in low-resource settings.</p>
-          </div>
-          <div class="card">
-        <h1 style="text-align: center;">AIM OF THE PROJECT
-            </h1>
+            <h1 style="text-align: center;">OVERVIEW OF THE PROBLEM</h1>
+            <p>Neonatal jaundice affects over 60% of newborns worldwide and occurs due to the accumulation of bilirubin in the bloodstream. Timely diagnosis is crucial, as untreated jaundice can lead to conditions like kernicterus or long-term neurological damage.</p>
+            <img src="baby 1.jpg" style="height: 30vh; width: 55vh;">
+            <p>Existing diagnostic methods require invasive blood sampling, often involving multiple pricks, causing discomfort to the infant and requiring clinical infrastructure that may not always be available in low-resource settings.</p>
+        </div>
+        <div class="card">
+            <h1 style="text-align: center;">AIM OF THE PROJECT</h1>
             <p>The NINJA project is committed to create an AI-driven, non-invasive, and accessible system to estimate bilirubin levels through simple skin images of neonates. This approach is intended to reduce the need for invasive testing and expand early screening capabilities to even the most remote healthcare centers.</p>
-            <img src="baby 2.jpg" style="height: 30vh; width: 75vh;">  
+            <img src="baby 2.jpg" style="height: 30vh; width: 75vh;">
         </div>
         <div class="card">
-            <h1 style="text-align: center;">AI-BASED APPROACH
-            </h1>  
-            <p>
-                NINJA applies advanced deep learning techniques, particularly convolutional neural networks like ResNet, trained on skin images to estimate Total Serum Bilirubin (TSB) levels. 
-            </p>
+            <h1 style="text-align: center;">AI-BASED APPROACH</h1>
+            <p>NINJA applies advanced deep learning techniques, particularly convolutional neural networks like ResNet, trained on skin images to estimate Total Serum Bilirubin (TSB) levels.</p>
             <img src="Ethical Approval 1.png" style="height: 30vh; width: 95vh;">
-            <p>
-                The model processes image features such as skin tone, lighting variations, and texture patterns to predict bilirubin levels accurately, offering a real-time and pain-free diagnostic tool.
-            </p>
+            <p>The model processes image features such as skin tone, lighting variations, and texture patterns to predict bilirubin levels accurately, offering a real-time and pain-free diagnostic tool.</p>
         </div>
         <div class="card">
-            <h1 style="text-align: center">FUNDING SOURCE
-            </h1> 
-            <P>This research is funded by the Indian Council of Medical Research (ICMR), a premier national agency supporting biomedical innovation across India.</P>
+            <h1 style="text-align: center">FUNDING SOURCE</h1>
+            <p>This research is funded by the Indian Council of Medical Research (ICMR), a premier national agency supporting biomedical innovation across India.</p>
             <img src="icmr buil.jpg" style="height: 50vh; width: 95vh;">
-            </div>
+        </div>
         <div class="card">
-            <h1 style="text-align: center;">COLLABORATING INSTITUITIONS
-            </h1> 
+            <h1 style="text-align: center;">COLLABORATING INSTITUITIONS</h1>
             <ul>
                 <li><p>MCM DAV College for Women Sector 36-A, Chandigarh</p></li>
                 <img src="mcm building.webp" style="height: 30vh; width: 55vh;">
@@ -89,20 +183,62 @@
                 <li><p>University Institute of Engineering and Technology (UIET), Panjab University, Chandigarh</p></li>
                 <img src="uiet buil.jpg" style="height: 30vh; width: 55vh;">
             </ul>
-            </div>
-         
-            <div class="card">
-            <h1 style="text-align: center;">ETHICAL GUIDELINES
-            </h1> 
-                <p>1. All image data is collected after obtaining informed consent from parents or guardians.</p>
-                <p>2. Faces and any identifiable features are anonymized before training.</p>
-                <p>3. Data is securely stored in the cloud using Base64 encoding.</p>
-                <p>4. The project adheres to the biomedical ethical standards laid out by ICMR and institutional review boards.</p>
         </div>
+        <div class="card">
+            <h1 style="text-align: center;">ETHICAL GUIDELINES</h1>
+            <p>1. All image data is collected after obtaining informed consent from parents or guardians.</p>
+            <p>2. Faces and any identifiable features are anonymized before training.</p>
+            <p>3. Data is securely stored in the cloud using Base64 encoding.</p>
+            <p>4. The project adheres to the biomedical ethical standards laid out by ICMR and institutional review boards.</p>
         </div>
+    </div>
 
-        <script>
-           
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <a href="https://www.icmr.gov.in/" target="_blank"><img src="icmr.jpeg" alt="ICMR Logo" class="footer-logo"></a>
+                <a href="https://uiet.puchd.ac.in/" target="_blank"><img src="uiet.jpeg" alt="UIET Logo" class="footer-logo"></a>
+                <a href="https://gmch.gov.in/" target="_blank"><img src="gmch.png" alt="GMCH Logo" class="footer-logo"></a>
+                <a href="https://mcmdavcwchd.edu.in/" target="_blank"><img src="mcm.jpeg" alt="MCM Logo" class="footer-logo"></a>
+                <p class="footer-description">
+                    NINJA is an AI-powered research project for non-invasive jaundice assessment in newborns using deep learning.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="Untitled-1.html">Home</a></li>
+                    <li><a href="#container6">Predict</a></li>
+                    <li><a href="publications.html">Publications</a></li>
+                    <li><a href="#">Products</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Email: contact@ninja.org</li>
+                    <li>Phone: +91 000000000</li>
+                    <li>India</li>
+                </ul>
+                <p class="footer-credit">Created by Ashmeet Kaur</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <hr />
+            <p>© 2025 NINJA. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
         const cards = document.querySelectorAll('.card');
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -110,12 +246,9 @@
                     entry.target.classList.add('visible');
                 }
             });
-        }, {
-            threshold: 0.1
-        });
+        }, { threshold: 0.1 });
 
         cards.forEach(card => observer.observe(card));
     </script>
-      
-      
 </body>
+</html>
