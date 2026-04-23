@@ -1,377 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <title>NINJA</title>
     <link href="ninja pt 2.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js">
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <script src="ninja.js" defer></script>
+    <script src="ninja.js" type="text/javascript"></script>
 
     <style>
-        /* ── PAGE LAYOUT ── */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Hanken Grotesk', sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background: #fff;
-        }
-
-        /* ════════════════════════════════
-           NAVBAR
-        ════════════════════════════════ */
-        .navbar {
-            display: flex;
-            align-items: center;
-            background: #fff;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            padding: 0 20px;
-            height: 70px;
-            gap: 12px;
-        }
-
-        .navbar .logo img {
-            height: 56px;
-            width: auto;
-        }
-
-        .navbar .logoIMG img {
-            height: 50px;
-            width: auto;
-        }
-
-        .nav-list {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            margin: 0;
-            padding: 0;
-            font-family: 'Oswald', sans-serif;
-            margin-left: 16px;
-        }
-
-        .nav-item { font-size: 17px; }
-
-        .nav-link {
-            text-decoration: none;
-            color: #333;
-            padding: 8px 12px;
-            border-radius: 5px;
-            display: block;
-            transition: color 0.2s, background 0.2s;
-            white-space: nowrap;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: #04629b;
-            font-weight: 700;
-        }
-
-        /* Database button */
-        .db-btn {
-            margin-left: auto;
-            background: #fff;
-            color: #333;
-            border: 2px solid #333;
-            padding: 8px 18px;
-            border-radius: 5px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: background 0.25s, color 0.25s, border-color 0.25s;
-            flex-shrink: 0;
-        }
-
-        .db-btn:hover {
-            background: #04629b;
-            color: #fff;
-            border-color: #04629b;
-        }
-
-        /* Hamburger — hidden on desktop */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            gap: 5px;
-            cursor: pointer;
-            padding: 6px;
-            margin-left: auto;
-            background: none;
-            border: none;
-            z-index: 1100;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 26px;
-            height: 3px;
-            background: #333;
-            border-radius: 3px;
-            transition: transform 0.3s, opacity 0.3s;
-        }
-
-        /* Animated X when open */
-        .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-        .hamburger.open span:nth-child(2) { opacity: 0; }
-        .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-        /* ════════════════════════════════
-           HERO BANNER IMAGE
-        ════════════════════════════════ */
+          
         .newcontainer {
-            margin-top: 70px;   /* matches navbar height */
-            width: 100%;
-            overflow: hidden;
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+            transform: translateY(30px);
+            transition: opacity 1.5s ease-out, transform 1.5s ease-out;
         }
 
         .newcontainer.show {
             opacity: 1;
             transform: translateY(0);
         }
-
-        .newcontainer img {
-            width: 100%;
-            height: 70vh;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-        }
-
-        /* ════════════════════════════════
-           CONTAINER 3 — INFO + COUNTERS
-        ════════════════════════════════ */
-        .container3 {
-            background: #fff;
-            display: flex;
-            flex-direction: column;
-            padding: 60px 40px 40px;
-        }
-
-        .container3 h1 {
-            color: #04629b;
-            font-family: 'Oswald', sans-serif;
-            font-size: clamp(1.3rem, 3vw, 2.2rem);
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .container3 > p {
-            font-family: 'PT Serif', serif;
-            font-size: clamp(15px, 2vw, 19px);
-            text-align: justify;
-            color: #222;
-            max-width: 900px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-            padding: 0 10px;
-        }
-
-        /* Counter cards wrapper */
-        .wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            width: 100%;
-            margin: 0 auto 40px;
-        }
-
-        .container4 {
-            width: 220px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-            padding: 16px 0;
-            border-radius: 10px;
-            border-bottom: 8px solid #04629b;
-            background: #fff;
-            box-shadow: 0 4px 20px rgba(4,98,155,0.10);
-            gap: 8px;
-        }
-
-        .container4 img {
-            height: 60px;
-            width: 60px;
-            object-fit: cover;
-            border-radius: 6px;
-        }
-
-        span.num {
-            font-family: 'Hanken Grotesk', sans-serif;
-            font-weight: 700;
-            font-size: 2.6em;
-            color: #04629b;
-        }
-
-        span.text {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1em;
-            color: #555;
-            text-align: center;
-        }
-
-        /* ════════════════════════════════
-           IMAGE SLIDER
-        ════════════════════════════════ */
-        .containers {
-            width: 100%;
-            height: 55vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            background: #f5f5f5;
-        }
-
-        .slider {
-            height: 55vh;
-            width: 100vw;
-            display: flex;
-            perspective: 1000px;
-            position: relative;
-            align-items: center;
-        }
-
-        .box1 { background: url('img 1.png') center/cover; }
-        .box2 { background: url('img 2.png') center/cover; }
-        .box3 { background: url('img 3.png') center/cover; }
-        .box4 { background: url('img 4.png') center/cover; }
-        .box5 { background: url('5.png')     center/cover; }
-        .box6 { background: url('6.png')     center/cover; }
-        .box7 { background: url('7.png')     center/cover; }
-
-        .slider [class*="box"] {
-            overflow: hidden;
-            border-radius: 16px;
-            transition: all 1s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-            position: absolute;
-        }
-
-        .slider [class*="box"]:nth-child(7),
-        .slider [class*="box"]:nth-child(1) {
-            width: 38vh; height: 56vh;
-            transform: scale(0.2) translate(-50%,-50%);
-            top: 10%; z-index: 1;
-        }
-        .slider [class*="box"]:nth-child(2),
-        .slider [class*="box"]:nth-child(6) {
-            width: 38vh; height: 56vh;
-            transform: scale(0.4) translate(-50%,-50%);
-            top: 20%; z-index: 2;
-        }
-        .slider [class*="box"]:nth-child(3),
-        .slider [class*="box"]:nth-child(5) {
-            width: 38vh; height: 56vh;
-            transform: scale(0.6) translate(-50%,-50%);
-            top: 30%; z-index: 3;
-        }
-        .slider [class*="box"]:nth-child(4) {
-            width: 38vh; height: 56vh;
-            transform: scale(1) translate(-50%,-50%);
-            top: 50%; z-index: 4;
-        }
-        .slider [class*="box"]:nth-child(1) { left: -13%; }
-        .slider [class*="box"]:nth-child(2) { left: -5%;  }
-        .slider [class*="box"]:nth-child(3) { left:  10%; }
-        .slider [class*="box"]:nth-child(4) { left:  50%; }
-        .slider [class*="box"]:nth-child(5) { left:  71%; }
-        .slider [class*="box"]:nth-child(6) { left:  85%; }
-        .slider [class*="box"]:nth-child(7) { left: 100%; }
-
-        .slider .firstSlide { animation: firstChild 1s; }
-
-        @keyframes firstChild {
-            0%   { left: 100%; transform: scale(0.2) translate(-50%,-50%); }
-            100% { left: -13%; transform: scale(0.2) translate(-50%,-50%); }
-        }
-
-        /* ════════════════════════════════
-           FOOTER
-        ════════════════════════════════ */
-        .footer {
-            background: #111;
-            color: #fff;
-            padding: 44px 24px 20px;
-            font-family: 'Montserrat', sans-serif;
-            margin-top: auto;
-            position: static !important;
-            height: auto !important;
-        }
-
-        .footer .footer-container {
-            position: static !important;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            gap: 24px;
-        }
-
-        .footer-left,
-        .footer-section { flex: 1 1 180px; }
-
-        .footer-logo {
-            width: 56px; height: 46px;
-            object-fit: contain;
-            margin-right: 8px; margin-bottom: 12px;
-            vertical-align: middle;
-        }
-
-        .footer-description { font-size: 13px; color: #ccc; margin-top: 10px; line-height: 1.6; }
-
-        .footer-section h3 { color: #fff; font-size: 14px; letter-spacing: 0.5px; margin-bottom: 12px; }
-
-        .footer-section ul { list-style: none; padding: 0; margin: 0; }
-        .footer-section ul li { color: #ccc; font-size: 13px; margin-bottom: 7px; }
-        .footer-section ul li a { color: #ccc; text-decoration: none; transition: color 0.2s; }
-        .footer-section ul li a:hover { color: #fff; }
-
-        .footer-credit { color: #aaa; font-size: 12px; margin-top: 10px; }
-
-        .footer .social-icons { display: flex; gap: 14px; flex-wrap: wrap; }
-        .footer .social-icons a { color: #ccc; font-size: 18px; transition: color 0.2s; }
-        .footer .social-icons a:hover { color: #fff; }
-
-        .footer-bottom { text-align: center; font-size: 12px; color: #aaa; margin-top: 28px; }
-        .footer-bottom hr { border: none; border-top: 1px solid #333; margin-bottom: 10px; }
-
-        /* ════════════════════════════════
-           RESPONSIVE
-        ════════════════════════════════ */
-
+        
         /* ── Tablet ≤ 1023px ── */
         @media (max-width: 1023px) {
             .nav-list { gap: 2px; margin-left: 8px; }
             .nav-item  { font-size: 15px; }
             .db-btn    { font-size: 14px; padding: 7px 14px; }
         }
-
+ 
         /* ── Mobile ≤ 768px ── */
         @media (max-width: 768px) {
-
+ 
             /* Navbar switches to collapsible */
             .navbar {
                 flex-wrap: wrap;
@@ -379,16 +48,16 @@
                 padding: 10px 16px;
                 gap: 0;
             }
-
+ 
             .navbar .logo    { flex-shrink: 0; }
             .navbar .logoIMG { flex-shrink: 0; margin-left: 8px; }
-
+ 
             .navbar .logo img   { height: 44px; }
             .navbar .logoIMG img { height: 40px; }
-
+ 
             /* Hamburger visible */
             .hamburger { display: flex; margin-left: auto; }
-
+ 
             /* Database button beside hamburger */
             .db-btn {
                 font-size: 12px;
@@ -396,7 +65,7 @@
                 margin-left: 10px;
                 order: 3;
             }
-
+ 
             /* Nav list hidden by default */
             .nav-list {
                 display: none;
@@ -409,40 +78,40 @@
                 order: 4;           /* appears below logo row */
                 gap: 0;
             }
-
+ 
             .nav-list.open {
                 display: flex;
                 animation: slideDown 0.25s ease;
             }
-
+ 
             @keyframes slideDown {
                 from { opacity: 0; transform: translateY(-8px); }
                 to   { opacity: 1; transform: translateY(0); }
             }
-
+ 
             .nav-item { width: 100%; font-size: 16px; }
-
+ 
             .nav-link {
                 padding: 12px 20px;
                 border-bottom: 1px solid #f0f0f0;
                 border-radius: 0;
             }
-
+ 
             .nav-link:hover { background: #f0f8ff; }
-
+ 
             /* Hero */
             .newcontainer { margin-top: 64px; }
             .newcontainer img { height: 40vh; }
-
+ 
             /* Info section */
             .container3 { padding: 36px 20px 30px; }
             .container3 > p { font-size: 15px; }
-
+ 
             /* Counters */
             .wrapper { gap: 16px; }
             .container4 { width: 44vw; max-width: 200px; }
             span.num { font-size: 2em; }
-
+ 
             /* Slider */
             .containers { height: 42vh; }
             .slider { height: 42vh; }
@@ -450,26 +119,26 @@
             .slider [class*="box"]:nth-child(4) { width: 30vh; height: 44vh; }
             .slider [class*="box"]:nth-child(1) { left: -18%; }
             .slider [class*="box"]:nth-child(7) { left: 105%; }
-
+ 
             /* Footer */
             .footer-left,
             .footer-section { flex: 1 1 100%; }
         }
-
+ 
         /* ── Small Mobile ≤ 480px ── */
         @media (max-width: 480px) {
             .navbar .logo img    { height: 36px; }
             .navbar .logoIMG img { height: 32px; }
             .db-btn { display: none; } /* hide to save space; accessible from nav */
-
+ 
             .newcontainer img { height: 30vh; }
-
+ 
             .container3 { padding: 28px 14px 24px; }
             .container3 > p { font-size: 14px; }
-
+ 
             .wrapper { flex-direction: column; align-items: center; }
             .container4 { width: 88vw; max-width: 320px; }
-
+ 
             /* Slider: show only centre 3 */
             .slider [class*="box"]:nth-child(1),
             .slider [class*="box"]:nth-child(2),
@@ -478,7 +147,7 @@
             .slider [class*="box"]:nth-child(3) { left: 5%;  transform: scale(0.6) translate(-50%,-50%); }
             .slider [class*="box"]:nth-child(5) { left: 78%; transform: scale(0.6) translate(-50%,-50%); }
             .slider [class*="box"]:nth-child(4) { width: 34vh; height: 48vh; }
-
+ 
             .footer { padding: 30px 14px 16px; }
             .footer-section h3 { font-size: 13px; }
         }
@@ -486,81 +155,79 @@
 </head>
 
 <body>
+    <div class="container" id="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="ninja logo pt2.png" alt="Logo">
+            </div>
+            <div class="logoIMG">
+                <img src="logo img.JPG" alt="Logo">
+            </div>
 
-    <!-- ── NAVBAR ── -->
-    <nav class="navbar" id="navbar">
-        <div class="logo">
-            <img src="ninja logo pt2.png" alt="NINJA Logo">
+            <ul class="nav-list" id="navList">
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="predict.html" class="nav-link">Predict</a></li>
+                <li class="nav-item"><a href="publications.html" class="nav-link">Publications</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
+                <li class="nav-item"><a href="ourteam.html" class="nav-link">Our Team</a></li>
+            </ul>
+
+            <button class="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
+                Our Database
+            </button>
         </div>
-        <div class="logoIMG">
-            <img src="logo img.JPG" alt="Logo">
-        </div>
-
-        <!-- Hamburger button -->
-        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <!-- Database button (visible on mobile beside hamburger) -->
-        <button class="db-btn" id="dbBtnMobile"
-            onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
-            Our Database
-        </button>
-
-        <ul class="nav-list" id="navList">
-            <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
-            <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
-            <li class="nav-item"><a href="predict.html" class="nav-link">Predict</a></li>
-            <li class="nav-item"><a href="publications.html" class="nav-link">Publications</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
-            <li class="nav-item"><a href="ourteam.html" class="nav-link">Our Team</a></li>
-        </ul>
-
-        <!-- Desktop database button -->
-        <button class="db-btn" id="dbBtnDesktop" style="display:none"
-            onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
-            Our Database
-        </button>
-    </nav>
-
-    <!-- ── HERO IMAGE ── -->
-    <div class="newcontainer" id="newcontainer">
-        <img src="adj photo.jpg" alt="NINJA Hero">
     </div>
 
-    <!-- ── INFO + COUNTERS ── -->
-    <div class="container3" id="container3">
-        <h1>NINJA: NON INVASIVE NEONATE JAUNDICE ESTIMATION</h1>
-        <p>NINJA (Non-invasive Neonate Jaundice Assessment) is an AI-powered research initiative aimed at developing a safe, contactless method for estimating bilirubin levels in newborns using skin images. Traditional methods for jaundice detection often require invasive blood tests, which can be stressful for both infants and caregivers. NINJA leverages deep learning techniques to analyze visual cues from skin images and predict Total Serum Bilirubin (TSB) levels accurately. By integrating advanced AI with accessible imaging, the project aspires to support early diagnosis and reduce the dependence on invasive procedures, especially in resource-limited settings.</p>
+    <script>
+        const menuButton = document.querySelector('.menu-button');
+        const navList = document.getElementById('navList');
 
+            if (menuButton) {
+            menuButton.addEventListener('click', function () {
+                navList.classList.toggle('show');
+            });
+        }
+
+        window.addEventListener("load", () => {
+            document.querySelector(".newcontainer").classList.add("show");
+        });
+    </script>
+
+    <div class="newcontainer">
+        <img src="adj photo.jpg" style="width: 100%; top: 30%; padding-top: 10%; height: 70vh;">
+    </div>
+
+    <div class="container3" id="container3">
+        <h1 style="text-align: center;">NINJA: NON INVASIVE NEONATE JAUNDICE ESTIMATION</h1>
+        <p>NINJA (Non-invasive Neonate Jaundice Assessment) is an AI-powered research initiative aimed at developing a safe, contactless method for estimating bilirubin levels in newborns using skin images. Traditional methods for jaundice detection often require invasive blood tests, which can be stressful for both infants and caregivers. NINJA leverages deep learning techniques to analyze visual cues from skin images and predict Total Serum Bilirubin (TSB) levels accurately. By integrating advanced AI with accessible imaging, the project aspires to support early diagnosis and reduce the dependence on invasive procedures, especially in resource-limited settings.</p>
+        
         <div class="wrapper">
             <div class="container4">
-                <img src="face clr.jpg" alt="Face">
+                <img src="face clr.jpg">
                 <span class="num" data-val="2000">0000</span>
                 <span class="text">Face</span>
             </div>
+
             <div class="container4">
-                <img src="strnum clr.jpg" alt="Sternum">
+                <img src="strnum clr.jpg">
                 <span class="num" data-val="2000">0000</span>
                 <span class="text">Sternum</span>
             </div>
+
             <div class="container4">
-                <img src="lgo cpy clr.jpg" alt="Full body">
+                <img src="lgo cpy clr.jpg">
                 <span class="num" data-val="2000">0000</span>
                 <span class="text">Full body</span>
             </div>
         </div>
-
-        <h1>A GLIMPSE OF OUR DATASET</h1>
+        <h1 style="text-align: center;">A GLIMPSE OF OUR DATASET</h1>
     </div>
 
     <script src="js.js"></script>
 
-    <!-- ── IMAGE SLIDER ── -->
     <div class="containers">
-        <div class="slider" id="slider">
+        <div class="slider">
             <div class="box1"></div>
             <div class="box2"></div>
             <div class="box3"></div>
@@ -571,22 +238,42 @@
         </div>
     </div>
 
-    <!-- ── FOOTER ── -->
+    <div id="test"></div>
+
+    <!-- Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        function rotate() {
+            var lastChild = $('.slider div:last-child').clone();
+            $('.slider div').removeClass('firstSlide')
+            $('.slider div:last-child').remove();
+            $('.slider').prepend(lastChild)
+            $(lastChild).addClass('firstSlide')
+        }
+
+        window.setInterval(function () {
+            rotate()
+        }, 4000);
+    </script>
+
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-left">
-                <a href="https://www.icmr.gov.in/" target="_blank"><img src="icmr.jpeg" alt="ICMR" class="footer-logo"></a>
-                <a href="https://uiet.puchd.ac.in/" target="_blank"><img src="uiet.jpeg" alt="UIET" class="footer-logo"></a>
-                <a href="https://gmch.gov.in/" target="_blank"><img src="gmch.png" alt="GMCH" class="footer-logo"></a>
-                <a href="https://mcmdavcwchd.edu.in/" target="_blank"><img src="mcm.jpeg" alt="MCM" class="footer-logo"></a>
-                <p class="footer-description">NINJA is an AI-powered research project for non-invasive jaundice assessment in newborns using deep learning.</p>
+                <a href="https://www.icmr.gov.in/" target="_blank"><img src="icmr.jpeg" alt="NINJA Logo" class="footer-logo"></a>
+                <a href="https://uiet.puchd.ac.in/" target="_blank"><img src="uiet.jpeg" alt="NINJA Logo" class="footer-logo"></a>
+                <a href="https://gmch.gov.in/" target="_blank"><img src="gmch.png" alt="NINJA Logo" class="footer-logo"></a>
+                <a href="https://mcmdavcwchd.edu.in/" target="_blank"><img src="mcm.jpeg" alt="NINJA Logo" class="footer-logo"></a>
+
+                <p class="footer-description">
+                    NINJA is an AI-powered research project for non-invasive jaundice assessment in newborns using deep learning.
+                </p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="predict.html">Predict</a></li>
-                    <li><a href="publications.html">Publications</a></li>
+                    <li><a href="#container6">Predict</a></li>
+                    <li><a href="#">Publications</a></li>
                     <li><a href="#">Products</a></li>
                 </ul>
             </div>
@@ -596,8 +283,8 @@
                     <li>Email: contact@ninja.org</li>
                     <li>Phone: +91 000000000</li>
                     <li>India</li>
+                    Created by Ashmeet Kaur
                 </ul>
-                <p class="footer-credit">Created by Ashmeet Kaur</p>
             </div>
             <div class="footer-section">
                 <h3>Follow Us</h3>
@@ -610,68 +297,10 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <hr>
+            <hr />
             <p>© 2025 NINJA. All Rights Reserved.</p>
         </div>
     </footer>
-
-    <!-- jQuery for slider -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
-    <script>
-        /* ── Hamburger toggle ── */
-        const hamburger = document.getElementById('hamburger');
-        const navList   = document.getElementById('navList');
-        const dbMobile  = document.getElementById('dbBtnMobile');
-        const dbDesktop = document.getElementById('dbBtnDesktop');
-
-        function isMobile() { return window.innerWidth <= 768; }
-
-        function syncButtons() {
-            if (isMobile()) {
-                dbMobile.style.display  = 'inline-block';
-                dbDesktop.style.display = 'none';
-            } else {
-                dbMobile.style.display  = 'none';
-                dbDesktop.style.display = 'inline-block';
-                navList.classList.remove('open');
-                hamburger.classList.remove('open');
-            }
-        }
-
-        syncButtons();
-        window.addEventListener('resize', syncButtons);
-
-        hamburger.addEventListener('click', () => {
-            const isOpen = navList.classList.toggle('open');
-            hamburger.classList.toggle('open', isOpen);
-            hamburger.setAttribute('aria-expanded', isOpen);
-        });
-
-        /* Close menu when a nav link is clicked (mobile) */
-        navList.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (isMobile()) {
-                    navList.classList.remove('open');
-                    hamburger.classList.remove('open');
-                }
-            });
-        });
-
-        /* ── Hero fade-in ── */
-        window.addEventListener('load', () => {
-            document.getElementById('newcontainer').classList.add('show');
-        });
-
-        /* ── Slider auto-rotate ── */
-        function rotate() {
-            var lastChild = $('.slider div:last-child').clone();
-            $('.slider div').removeClass('firstSlide');
-            $('.slider div:last-child').remove();
-            $('.slider').prepend(lastChild);
-            $(lastChild).addClass('firstSlide');
-        }
-        setInterval(rotate, 4000);
-    </script>
 </body>
 </html>
+
