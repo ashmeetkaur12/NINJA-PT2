@@ -1,5 +1,5 @@
 let valueDisplays = document.querySelectorAll(".num");
-let interval = 5000;
+let interval = 2000;
 
 let observer = new IntersectionObserver(
     (entries, observer) => {
