@@ -1,331 +1,509 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="ninja pt 2.css">
-  <title>Our Team – NINJA</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Our Team – NINJA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-  <style>
-    /* ── fade-in on scroll ── */
-    .box {
-      opacity: 0;
-      transition: opacity 1s ease-in;
-    }
-    .box.show {
-      opacity: 1;
-    }
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #fff;
+        }
 
-    /* ── team grid ── */
-    .containert {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px 60px;
-      justify-items: center;
-    }
+        /* ══ NAVBAR ══ */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            z-index: 2000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 0 20px;
+            height: 70px;
+            gap: 8px;
+        }
+        .logo img    { height: 54px; width: auto; display: block; }
+        .logoIMG img { height: 48px; width: auto; display: block; }
 
-    /* center last 2 items (columns 1 and 3 of a 3-col grid) */
-    .containert .box:nth-last-child(2) {
-      grid-column: 1 / 2;
-      justify-self: end;
-    }
-    .containert .box:nth-last-child(1) {
-      grid-column: 3 / 4;
-      justify-self: start;
-    }
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 2px;
+            margin: 0 0 0 10px;
+            padding: 0;
+            font-family: 'Oswald', sans-serif;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            padding: 8px 10px;
+            display: block;
+            font-size: 16px;
+            white-space: nowrap;
+            transition: color 0.2s;
+            border-radius: 4px;
+        }
+        .nav-link:hover, .nav-link.active { color: #04629b; font-weight: 700; }
 
-    /* ── page layout so footer sticks to bottom ── */
-    body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      margin: 0;
-    }
+        .db-btn {
+            margin-left: auto;
+            background: #fff;
+            color: #333;
+            border: 2px solid #333;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 15px;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: background 0.25s, color 0.25s, border-color 0.25s;
+        }
+        .db-btn:hover { background: #04629b; color: #fff; border-color: #04629b; }
 
-    .containert {
-      flex: 1;
-    }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 7px 8px;
+            background: none;
+            border: 2px solid #333;
+            border-radius: 5px;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px; height: 2px;
+            background: #333;
+            border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* ── FOOTER FIX ── 
-       Overrides position:absolute on .footer-container from ninja pt 2.css */
-    .footer {
-      background-color: #111;
-      color: #fff;
-      padding: 40px 20px 20px;
-      font-family: 'Montserrat', sans-serif;
-      margin-top: 0;
-      clear: both;
-      position: static !important;
-      height: auto !important;
-    }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px; left: 0; width: 100%;
+            background: #fff;
+            border-top: 3px solid #04629b;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            z-index: 1999;
+            flex-direction: column;
+        }
+        .mobile-menu.open { display: flex; animation: slideDown 0.22s ease; }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .mobile-menu a {
+            text-decoration: none;
+            color: #333;
+            font-family: 'Oswald', sans-serif;
+            font-size: 17px;
+            padding: 14px 24px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.15s, color 0.15s;
+        }
+        .mobile-menu a:hover { background: #f0f8ff; color: #04629b; }
+        .db-btn-mobile {
+            margin: 14px 24px 18px;
+            background: #04629b; color: #fff;
+            border: none; padding: 12px 0;
+            border-radius: 6px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px; cursor: pointer;
+            transition: background 0.2s;
+        }
+        .db-btn-mobile:hover { background: #023f66; }
 
-    .footer .footer-container {
-      position: static !important;
-      bottom: auto !important;
-      left: auto !important;
-      right: auto !important;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      max-width: 1200px;
-      margin: auto;
-      gap: 20px;
-    }
+        /* ══ PAGE HEADING ══ */
+        .page-heading {
+            text-align: center;
+            padding-top: 90px;
+            padding-bottom: 10px;
+            color: #04629b;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 2px;
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+        }
 
-    .footer-left,
-    .footer-section {
-      flex: 1 1 200px;
-      margin-bottom: 20px;
-    }
+        /* ══ TEAM GRID — 6-col so row 4 can be offset ══ */
+        .containert {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px 70px;
+            justify-items: center;
+            flex: 1;
+        }
+        .containert .box {
+            grid-column: span 2;
+            opacity: 0;
+            transition: opacity 1s ease-in;
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 0 30px;
+        }
+        .containert .box.show { opacity: 1; }
 
-    .footer-logo {
-      width: 60px;
-      height: 50px;
-      margin-right: 8px;
-      margin-bottom: 15px;
-      object-fit: contain;
-      vertical-align: middle;
-    }
+        /* Row 4 offset */
+        .containert .box:nth-last-child(2) { grid-column: 2 / 4; }
+        .containert .box:nth-last-child(1) { grid-column: 4 / 6; }
 
-    .footer-description {
-      font-size: 14px;
-      color: #ccc;
-      margin-top: 10px;
-      line-height: 1.6;
-    }
+        /* ══ CIRCLE CARDS ══ */
+        .circle {
+            position: relative;
+            width: 220px; height: 220px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.35s ease-in-out;
+        }
+        .circle .img-info { color: white; border-radius: 20%; }
+        .circle .img-info .img {
+            position: relative;
+            top: 0; left: 0;
+            width: 220px; height: 220px;
+            border-radius: 50%;
+            z-index: 12;
+            transition: all 0.35s ease-in-out;
+            transform: scale(1) translateX(0);
+        }
+        .circle .img-info .img::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 10px rgba(255,255,255,0.6), 0 1px 2px rgba(0,0,0,0.3);
+            transition: all 0.35s ease-in-out;
+        }
+        .circle .img-info .img img {
+            border-radius: 50%;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+        }
+        .circle .img-info:hover .img {
+            transform-origin: right;
+            transform: scale(0.5) translateX(100px);
+        }
+        .circle .img-info .info {
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: #04629b;
+            transform: translateX(-100%);
+            opacity: 0;
+            z-index: 11;
+            border-radius: 50%;
+            text-align: center;
+            pointer-events: none;
+            transition: all 0.35s ease-in-out;
+        }
+        .circle .img-info .info h3 {
+            position: relative;
+            padding: 55px 0 0 0;
+            margin: 0 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+            letter-spacing: 2px;
+            height: 110px;
+        }
+        .circle .img-info .info p {
+            padding: 10px 5px;
+            margin: 0 30px;
+            color: #fff;
+            font-size: 12px;
+            font-style: italic;
+            border-top: 1px solid rgba(255,255,255,0.5);
+        }
+        .circle .img-info:hover .info { opacity: 1; transform: translateX(0); }
 
-    .footer-section h3 {
-      color: #fff;
-      margin-bottom: 12px;
-      font-size: 15px;
-      letter-spacing: 0.5px;
-    }
+        /* ══ FOOTER ══ */
+        .footer {
+            background: #111; color: #fff;
+            padding: 44px 24px 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .footer-container {
+            display: flex; flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px; margin: 0 auto; gap: 24px;
+        }
+        .footer-left, .footer-section { flex: 1 1 180px; }
+        .footer-logo { width:54px; height:44px; object-fit:contain; margin-right:8px; margin-bottom:12px; vertical-align:middle; }
+        .footer-description { font-size:13px; color:#ccc; margin-top:10px; line-height:1.6; }
+        .footer-section h3 { color:#fff; font-size:14px; margin-bottom:12px; font-family:'Oswald',sans-serif; }
+        .footer-section ul { list-style:none; padding:0; margin:0; }
+        .footer-section ul li { color:#ccc; font-size:13px; margin-bottom:7px; }
+        .footer-section ul li a { color:#ccc; text-decoration:none; transition:color 0.2s; }
+        .footer-section ul li a:hover { color:#fff; }
+        .footer-credit { color:#aaa; font-size:12px; margin-top:10px; }
+        .social-icons { display:flex; gap:14px; flex-wrap:wrap; }
+        .social-icons a { color:#ccc; font-size:18px; transition:color 0.2s; }
+        .social-icons a:hover { color:#fff; }
+        .footer-bottom { text-align:center; font-size:12px; color:#aaa; margin-top:28px; }
+        .footer-bottom hr { border:none; border-top:1px solid #333; margin-bottom:10px; }
 
-    .footer-section ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+        /* ══ TABLET ══ */
+        @media (max-width:1100px) and (min-width:769px) {
+            .nav-link { font-size:14px; padding:8px 7px; }
+            .db-btn   { font-size:13px; padding:7px 12px; }
+            .logo img    { height:46px; }
+            .logoIMG img { height:42px; }
+            .circle, .circle .img-info .img { width:180px; height:180px; }
+            .circle .img-info .info h3 { font-size:12px; padding-top:40px; height:90px; }
+        }
 
-    .footer-section ul li {
-      color: #ccc;
-      margin-bottom: 8px;
-      font-size: 14px;
-    }
+        /* ══ MOBILE ≤768px ══ */
+        @media (max-width:768px) {
+            .navbar { height:60px; padding:0 14px; }
+            .logo img    { height:40px; }
+            .logoIMG img { height:36px; }
+            .nav-list { display:none !important; }
+            .db-btn   { display:none !important; }
+            .hamburger { display:flex !important; }
 
-    .footer-section ul li a {
-      color: #ccc;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+            .page-heading { padding-top:76px; font-size:1.3rem; }
 
-    .footer-section ul li a:hover {
-      color: #fff;
-    }
+            .containert {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 20px 8px;
+                padding: 14px 10px 36px;
+            }
+            .containert .box { grid-column: span 1 !important; }
+            .containert .box:nth-last-child(2) { grid-column: 1 / 2 !important; justify-self: center; }
+            .containert .box:nth-last-child(1) { grid-column: 2 / 3 !important; justify-self: center; }
 
-    .footer-credit {
-      color: #aaa;
-      font-size: 13px;
-      margin-top: 10px;
-    }
+            .circle, .circle .img-info .img { width:148px; height:148px; }
+            .circle .img-info .info h3 { font-size:11px; padding-top:34px; height:78px; }
+            .circle .img-info .info p  { font-size:10px; margin:0 12px; }
 
-    .social-icons a {
-      margin-right: 14px;
-      color: #ccc;
-      font-size: 18px;
-      transition: color 0.2s;
-    }
+            .footer-left, .footer-section { flex:1 1 100%; }
+        }
 
-    .social-icons a:hover {
-      color: #fff;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      font-size: 13px;
-      color: #aaa;
-      margin-top: 30px;
-    }
-
-    .footer-bottom hr {
-      border: none;
-      border-top: 1px solid #333;
-      margin-bottom: 12px;
-    }
-  </style>
+        /* ══ SMALL MOBILE ≤480px ══ */
+        @media (max-width:480px) {
+            .containert { gap:14px 4px; padding:10px 6px 28px; }
+            .circle, .circle .img-info .img { width:128px; height:128px; }
+            .circle .img-info .info h3 { font-size:10px; padding-top:26px; height:66px; }
+            .circle .img-info .info p  { font-size:9px; margin:0 8px; }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <div class="container" id="container">
-    <div class="navbar">
-      <div class="logo">
-        <img src="ninja logo pt2.png" alt="Logo">
-      </div>
-      <div class="logoIMG">
-        <img src="logo img.jpg" alt="Logo">
-      </div>
-      <ul class="nav-list" id="navList">
-        <li class="nav-item"><a href="Untitled-1.html" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
-        <li class="nav-item"><a href="predict.html" class="nav-link">Predict</a></li>
-        <li class="nav-item"><a href="publications.html" class="nav-link">Publications</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
-        <li class="nav-item"><a href="ourteam.html" class="nav-link" style="color:#04629b; font-weight:bold;">Our Team</a></li>
-      </ul>
-      <button class="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
-        Our Database
-      </button>
-    </div>
-  </div>
+    <!-- ══ NAVBAR ══ -->
+    <nav class="navbar">
+        <div class="logo"><img src="ninja logo pt2.png" alt="NINJA Logo"></div>
+        <div class="logoIMG"><img src="logo img.jpg" alt="Logo"></div>
 
-  <!-- HEADING -->
-  <h1 style="text-align:center; padding-top:120px; padding-bottom:10px; color:#04629b; font-family:'Oswald',sans-serif; letter-spacing:2px;">OUR TEAM</h1>
-
-  <!-- TEAM GRID -->
-  <div class="containert">
-    <div class="box">
-      <div class="circle"><div class="img-info">
-        <div class="img"><img src="navdeep maam.png" alt=""></div>
-        <div class="info" style="right:10%;"><h3><b>Dr. Navdeep Kaur</b><br>(Assistant Professor)</h3><p><br>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
-      </div></div>
-    </div>
-
-    <div class="box">
-      <div class="circle"><div class="img-info">
-        <div class="img"><img src="suksham jain.jpg" alt=""></div>
-        <div class="info" style="right:10%;"><h3><b>Dr. Suksham Jain</b><br>(Professor)</h3><p>Government Medical College & Hospital, Sector 32, Chandigarh</p></div>
-      </div></div>
-    </div>
-
-    <div class="box">
-      <div class="circle"><div class="img-info">
-        <div class="img"><img src="Ajay Sir.png" alt=""></div>
-        <div class="info" style="right:10%;"><h3><b>Dr. Ajay Mittal</b><br>(Professor)</h3><p>UIET, Panjab University, Sector 25, Chandigarh</p></div>
-      </div></div>
-    </div>
-
-    <div class="box">
-      <div class="circle"><div class="img-info">
-        <div class="img"><img src="mandeep maam.png" alt=""></div>
-        <div class="info" style="right:10%;"><h3><b>Dr. Mandeep Kaur</b><br>(Assistant Professor)</h3><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
-      </div></div>
-    </div>
-
-    <div class="box">
-      <div class="circle"><div class="img-info">
-        <div class="img"><img src="deepak chawla.png" alt=""></div>
-        <div class="info" style="right:10%;"><h3><b>Dr. Deepak Chawla</b><br>(Professor)</h3><p>Government Medical College & Hospital, Sector 32, Chandigarh</p></div>
-      </div></div>
-    </div>
-
-    <div class="box">
-      <div class="circle"><div class="img-info">
-        <div class="img"><img src="preeti aggarwal.JPG" alt=""></div>
-        <div class="info" style="right:10%;"><h3><b>Dr. Preeti Aggarwal</b><br>(Assistant Professor)</h3><br><p>UIET, Panjab University, Sector 25, Chandigarh</p></div>
-      </div></div>
-    </div>
-
-    <div class="box">
-      <div class="circle"><div class="img-info">
-        <div class="img"><img src="sonali.jpg" alt=""></div>
-        <div class="info" style="right:16%;"><h3><b>Ms. Sonali Mehndiratta</b><br>(Project Technical Support- III)</h3><br><br><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
-      </div></div>
-    </div>
-
-    <div class="box">
-      <div class="circle"><div class="img-info">
-        <div class="img"><img src="bipan.jpg" alt=""></div>
-        <div class="info" style="right:16%;"><h3><b>Mr. Bipan Tiwari</b><br>(Project Technical Support- III)</h3><br><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
-      </div></div>
-    </div>
-
-    <div class="box">
-      <div class="circle"><div class="img-info">
-        <div class="img"><img src="harveen.jpg" alt=""></div>
-        <div class="info" style="right:12%;"><h3><b>Ms. Harveen Kaur</b><br>(Project Technical Support- I)</h3><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
-      </div></div>
-    </div>
-
-    <div class="box">
-      <div class="circle"><div class="img-info">
-        <div class="img"><img src="harveen.jpg" alt=""></div>
-        <div class="info" style="right:12%;"><h3><b>Ms. Ritu Rani</b><br>(Project Nurse- III)</h3><p>Government Medical College &amp; Hospital, Sector 32, Chandigarh</p></div>
-      </div></div>
-    </div>
-
-    <div class="box">
-      <div class="circle"><div class="img-info">
-        <div class="img"><img src="harveen.jpg" alt=""></div>
-        <div class="info" style="right:12%;"><h3><b>Ms. Reena</b><br>(Office Helper)</h3><p>Government Medical College &amp; Hospital, Sector 32, Chandigarh</p></div>
-      </div></div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-left">
-        <a href="https://www.icmr.gov.in/" target="_blank"><img src="icmr.jpeg" alt="ICMR Logo" class="footer-logo"></a>
-        <a href="https://uiet.puchd.ac.in/" target="_blank"><img src="uiet.jpeg" alt="UIET Logo" class="footer-logo"></a>
-        <a href="https://gmch.gov.in/" target="_blank"><img src="gmch.png" alt="GMCH Logo" class="footer-logo"></a>
-        <a href="https://mcmdavcwchd.edu.in/" target="_blank"><img src="mcm.jpeg" alt="MCM Logo" class="footer-logo"></a>
-        <p class="footer-description">NINJA is an AI-powered research project for non-invasive jaundice assessment in newborns using deep learning.</p>
-      </div>
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="Untitled-1.html">Home</a></li>
-          <li><a href="predict.html">Predict</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="#">Products</a></li>
+        <ul class="nav-list">
+            <li><a href="Untitled-1.html" class="nav-link">Home</a></li>
+            <li><a href="aboutus.html" class="nav-link">About Us</a></li>
+            <li><a href="predict.html" class="nav-link">Predict</a></li>
+            <li><a href="publications.html" class="nav-link">Publications</a></li>
+            <li><a href="#" class="nav-link">Products</a></li>
+            <li><a href="ourteam.html" class="nav-link active">Our Team</a></li>
         </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Contact</h3>
-        <ul>
-          <li>Email: contact@ninja.org</li>
-          <li>Phone: +91 000000000</li>
-          <li>India</li>
-        </ul>
-        <p class="footer-credit">Created by Ashmeet Kaur</p>
-      </div>
-      <div class="footer-section">
-        <h3>Follow Us</h3>
-        <div class="social-icons">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+        <button class="db-btn"
+            onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
+            Our Database
+        </button>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- ══ MOBILE MENU ══ -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="Untitled-1.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="predict.html">Predict</a>
+        <a href="publications.html">Publications</a>
+        <a href="#">Products</a>
+        <a href="ourteam.html">Our Team</a>
+        <button class="db-btn-mobile"
+            onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
+            Our Database
+        </button>
+    </div>
+
+    <h1 class="page-heading">OUR TEAM</h1>
+
+    <!-- ══ TEAM GRID ══ -->
+    <div class="containert">
+
+        <!-- Row 1 -->
+        <div class="box"><div class="circle"><div class="img-info">
+            <div class="img"><img src="navdeep maam.png" alt="Dr. Navdeep Kaur"></div>
+            <div class="info"><h3><b>Dr. Navdeep Kaur</b><br>(Assistant Professor)</h3><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
+        </div></div></div>
+
+        <div class="box"><div class="circle"><div class="img-info">
+            <div class="img"><img src="suksham jain.jpg" alt="Dr. Suksham Jain"></div>
+            <div class="info"><h3><b>Dr. Suksham Jain</b><br>(Professor)</h3><p>Government Medical College &amp; Hospital, Sector 32, Chandigarh</p></div>
+        </div></div></div>
+
+        <div class="box"><div class="circle"><div class="img-info">
+            <div class="img"><img src="Ajay Sir.png" alt="Dr. Ajay Mittal"></div>
+            <div class="info"><h3><b>Dr. Ajay Mittal</b><br>(Professor)</h3><p>UIET, Panjab University, Sector 25, Chandigarh</p></div>
+        </div></div></div>
+
+        <!-- Row 2 -->
+        <div class="box"><div class="circle"><div class="img-info">
+            <div class="img"><img src="mandeep maam.png" alt="Dr. Mandeep Kaur"></div>
+            <div class="info"><h3><b>Dr. Mandeep Kaur</b><br>(Assistant Professor)</h3><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
+        </div></div></div>
+
+        <div class="box"><div class="circle"><div class="img-info">
+            <div class="img"><img src="deepak chawla.png" alt="Dr. Deepak Chawla"></div>
+            <div class="info"><h3><b>Dr. Deepak Chawla</b><br>(Professor)</h3><p>Government Medical College &amp; Hospital, Sector 32, Chandigarh</p></div>
+        </div></div></div>
+
+        <div class="box"><div class="circle"><div class="img-info">
+            <div class="img"><img src="preeti aggarwal.JPG" alt="Dr. Preeti Aggarwal"></div>
+            <div class="info"><h3><b>Dr. Preeti Aggarwal</b><br>(Assistant Professor)</h3><p>UIET, Panjab University, Sector 25, Chandigarh</p></div>
+        </div></div></div>
+
+        <!-- Row 3 -->
+        <div class="box"><div class="circle"><div class="img-info">
+            <div class="img"><img src="sonali.jpg" alt="Ms. Sonali Mehndiratta"></div>
+            <div class="info"><h3><b>Ms. Sonali Mehndiratta</b><br>(Project Technical Support- III)</h3><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
+        </div></div></div>
+
+        <div class="box"><div class="circle"><div class="img-info">
+            <div class="img"><img src="bipan.jpg" alt="Mr. Bipan Tiwari"></div>
+            <div class="info"><h3><b>Mr. Bipan Tiwari</b><br>(Project Technical Support- III)</h3><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
+        </div></div></div>
+
+        <div class="box"><div class="circle"><div class="img-info">
+            <div class="img"><img src="harveen.jpg" alt="Ms. Harveen Kaur"></div>
+            <div class="info"><h3><b>Ms. Harveen Kaur</b><br>(Project Technical Support- I)</h3><p>MCMDAV College for Women, Sector 36 Chandigarh</p></div>
+        </div></div></div>
+
+        <!-- Row 4 — offset between row 3 members -->
+        <div class="box"><div class="circle"><div class="img-info">
+            <div class="img"><img src="ritu.jpg" alt="Ms. Ritu Rani"></div>
+            <div class="info"><h3><b>Ms. Ritu Rani</b><br>(Project Nurse- III)</h3><p>Government Medical College &amp; Hospital, Sector 32, Chandigarh</p></div>
+        </div></div></div>
+
+        <div class="box"><div class="circle"><div class="img-info">
+            <div class="img"><img src="reena.jpg" alt="Ms. Reena"></div>
+            <div class="info"><h3><b>Ms. Reena</b><br>(Office Helper)</h3><p>Government Medical College &amp; Hospital, Sector 32, Chandigarh</p></div>
+        </div></div></div>
+
+    </div>
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <a href="https://www.icmr.gov.in/" target="_blank"><img src="icmr.jpeg" alt="ICMR" class="footer-logo"></a>
+                <a href="https://uiet.puchd.ac.in/" target="_blank"><img src="uiet.jpeg" alt="UIET" class="footer-logo"></a>
+                <a href="https://gmch.gov.in/" target="_blank"><img src="gmch.png"  alt="GMCH" class="footer-logo"></a>
+                <a href="https://mcmdavcwchd.edu.in/" target="_blank"><img src="mcm.jpeg" alt="MCM"  class="footer-logo"></a>
+                <p class="footer-description">NINJA is an AI-powered research project for non-invasive jaundice assessment in newborns using deep learning.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="Untitled-1.html">Home</a></li>
+                    <li><a href="predict.html">Predict</a></li>
+                    <li><a href="publications.html">Publications</a></li>
+                    <li><a href="#">Products</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Email: contact@ninja.org</li>
+                    <li>Phone: +91 000000000</li>
+                    <li>India</li>
+                </ul>
+                <p class="footer-credit">Created by Ashmeet Kaur</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <hr>
-      <p>© 2025 NINJA. All Rights Reserved.</p>
-    </div>
-  </footer>
+        <div class="footer-bottom">
+            <hr>
+            <p>© 2025 NINJA. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-  <script>
-    const boxes = document.querySelectorAll('.box');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
+    <script>
+        /* ══ Hamburger ══ */
+        var hamburger  = document.getElementById('hamburger');
+        var mobileMenu = document.getElementById('mobileMenu');
 
-    boxes.forEach(box => observer.observe(box));
-  </script>
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var isOpen = mobileMenu.classList.toggle('open');
+            hamburger.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('open');
+                hamburger.classList.remove('open');
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('open');
+                hamburger.classList.remove('open');
+            }
+        });
+
+        /* ══ Scroll fade-in ══ */
+        var boxes    = document.querySelectorAll('.box');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        boxes.forEach(function(box) { observer.observe(box); });
+    </script>
 </body>
 </html>
