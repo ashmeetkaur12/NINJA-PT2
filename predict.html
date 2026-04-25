@@ -2,56 +2,168 @@
 <html lang="en">
 <head>
     <title>NINJA – Predict Bilirubin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="ninja pt 2.css">
 
     <style>
-          
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'PT Serif', serif;
-            background-color: #f5f7fa;
-            min-height: 100vh;
+            background: #f5f7fa;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
         }
 
-          
+        /* ══ NAVBAR ══ */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            z-index: 2000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 0 20px;
+            height: 70px;
+            gap: 8px;
+        }
+        .logo img    { height: 54px; width: auto; display: block; }
+        .logoIMG img { height: 48px; width: auto; display: block; }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 2px;
+            margin: 0 0 0 10px;
+            padding: 0;
+            font-family: 'Oswald', sans-serif;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            padding: 8px 10px;
+            display: block;
+            font-size: 16px;
+            white-space: nowrap;
+            transition: color 0.2s;
+            border-radius: 4px;
+        }
+        .nav-link:hover, .nav-link.active { color: #04629b; font-weight: 700; }
+
+        .db-btn {
+            margin-left: auto;
+            background: #fff;
+            color: #333;
+            border: 2px solid #333;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 15px;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: background 0.25s, color 0.25s, border-color 0.25s;
+        }
+        .db-btn:hover { background: #04629b; color: #fff; border-color: #04629b; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 7px 8px;
+            background: none;
+            border: 2px solid #333;
+            border-radius: 5px;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px; height: 2px;
+            background: #333;
+            border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px; left: 0; width: 100%;
+            background: #fff;
+            border-top: 3px solid #04629b;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            z-index: 1999;
+            flex-direction: column;
+        }
+        .mobile-menu.open { display: flex; animation: slideDown 0.22s ease; }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .mobile-menu a {
+            text-decoration: none;
+            color: #333;
+            font-family: 'Oswald', sans-serif;
+            font-size: 17px;
+            padding: 14px 24px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.15s, color 0.15s;
+        }
+        .mobile-menu a:hover { background: #f0f8ff; color: #04629b; }
+        .db-btn-mobile {
+            margin: 14px 24px 18px;
+            background: #04629b; color: #fff;
+            border: none; padding: 12px 0;
+            border-radius: 6px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px; cursor: pointer;
+            transition: background 0.2s;
+        }
+        .db-btn-mobile:hover { background: #023f66; }
+
+        /* ══ HERO ══ */
         .predict-hero {
+            margin-top: 70px;
             background-color: #04629b;
             background-image:
                 radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.07) 0%, transparent 60%),
                 radial-gradient(ellipse at 80% 20%, rgba(0,0,0,0.15) 0%, transparent 50%);
-            padding: 80px 20px 60px;
+            padding: 60px 20px 50px;
             text-align: center;
             color: #fff;
         }
-
         .predict-hero h1 {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-size: clamp(1.6rem, 4vw, 3rem);
             font-weight: 600;
             letter-spacing: 2px;
             color: #fff;
             margin-bottom: 12px;
         }
-
         .predict-hero p {
             font-family: 'PT Serif', serif;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: rgba(255,255,255,0.85);
             max-width: 600px;
             margin: 0 auto;
             line-height: 1.7;
         }
 
-          
+        /* ══ MAIN WRAPPER ══ */
         .predict-wrapper {
             flex: 1;
             display: flex;
@@ -64,19 +176,18 @@
             background: #fff;
             border: 3px solid #04629b;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(4, 98, 155, 0.12);
+            box-shadow: 0 20px 60px rgba(4,98,155,0.12);
             padding: 40px;
             width: 100%;
             max-width: 680px;
             animation: slideUp 0.6s ease both;
         }
-
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(40px); }
             to   { opacity: 1; transform: translateY(0); }
         }
 
-          
+        /* ══ UPLOAD ZONE ══ */
         .upload-zone {
             border: 2.5px dashed #04629b;
             border-radius: 14px;
@@ -87,410 +198,194 @@
             background: #f0f8ff;
             position: relative;
         }
-
-        .upload-zone:hover,
-        .upload-zone.dragover {
-            background: #e0f0fb;
-            border-color: #023f66;
-        }
-
+        .upload-zone:hover, .upload-zone.dragover { background: #e0f0fb; border-color: #023f66; }
         .upload-zone input[type="file"] {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            cursor: pointer;
-            width: 100%;
-            height: 100%;
+            position: absolute; inset: 0;
+            opacity: 0; cursor: pointer;
+            width: 100%; height: 100%;
         }
+        .upload-icon { font-size: 3rem; color: #04629b; margin-bottom: 14px; display: block; }
+        .upload-zone h2 { font-family: 'Oswald', sans-serif; font-size: 1.4rem; color: #04629b; font-weight: 500; margin-bottom: 6px; }
+        .upload-zone p  { font-size: 0.9rem; color: #777; font-family: 'Montserrat', sans-serif; }
+        .browse-link { color: #04629b; font-weight: 600; text-decoration: underline; }
 
-        .upload-icon {
-            font-size: 3rem;
-            color: #04629b;
-            margin-bottom: 14px;
-            display: block;
-        }
-
-        .upload-zone h2 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.4rem;
-            color: #04629b;
-            font-weight: 500;
-            margin-bottom: 6px;
-        }
-
-        .upload-zone p {
-            font-size: 0.9rem;
-            color: #777;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .upload-zone .browse-link {
-            color: #04629b;
-            font-weight: 600;
-            text-decoration: underline;
-        }
-
-          
-        .preview-section {
-            display: none;
-            margin-top: 28px;
-            text-align: center;
-            animation: fadeIn 0.4s ease both;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to   { opacity: 1; }
-        }
-
+        /* ══ PREVIEW ══ */
+        .preview-section { display: none; margin-top: 28px; text-align: center; animation: fadeIn 0.4s ease both; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .preview-section.show { display: block; }
+        .preview-label { font-family: 'Oswald', sans-serif; font-size: 0.85rem; letter-spacing: 1.5px; color: #04629b; text-transform: uppercase; margin-bottom: 10px; }
+        #preview-img { max-width: 100%; max-height: 260px; border-radius: 12px; border: 2px solid #04629b; object-fit: cover; box-shadow: 0 8px 24px rgba(4,98,155,0.15); }
+        .file-name-tag { display: inline-block; margin-top: 10px; background: #e8f4fd; color: #04629b; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; padding: 4px 12px; border-radius: 20px; font-weight: 500; }
 
-        .preview-label {
-            font-family: 'Oswald', sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 1.5px;
-            color: #04629b;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        #preview-img {
-            max-width: 100%;
-            max-height: 260px;
-            border-radius: 12px;
-            border: 2px solid #04629b;
-            object-fit: cover;
-            box-shadow: 0 8px 24px rgba(4,98,155,0.15);
-        }
-
-        .file-name-tag {
-            display: inline-block;
-            margin-top: 10px;
-            background: #e8f4fd;
-            color: #04629b;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.82rem;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: 500;
-        }
-
-          
-        .check-btn-wrap {
-            display: none;
-            margin-top: 28px;
-            text-align: center;
-        }
-
+        /* ══ CHECK BUTTON ══ */
+        .check-btn-wrap { display: none; margin-top: 28px; text-align: center; }
         .check-btn-wrap.show { display: block; }
-
         #check-btn {
-            background-color: #04629b;
-            color: #fff;
-            border: none;
-            padding: 14px 44px;
-            border-radius: 8px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.15rem;
-            letter-spacing: 1px;
+            background: #04629b; color: #fff; border: none;
+            padding: 14px 44px; border-radius: 8px;
+            font-family: 'Oswald', sans-serif; font-size: 1.15rem; letter-spacing: 1px;
             cursor: pointer;
             transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 18px rgba(4,98,155,0.25);
         }
-
-        #check-btn:hover {
-            background-color: #023f66;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(4,98,155,0.3);
-        }
-
+        #check-btn:hover { background: #023f66; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(4,98,155,0.3); }
         #check-btn:active { transform: translateY(0); }
+        .btn-icon { margin-right: 8px; }
 
-        #check-btn .btn-icon { margin-right: 8px; }
-
-          
-        .loading-bar-wrap {
-            display: none;
-            margin-top: 24px;
-        }
-
+        /* ══ LOADING BAR ══ */
+        .loading-bar-wrap { display: none; margin-top: 24px; }
         .loading-bar-wrap.show { display: block; }
+        .loading-text { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: #04629b; margin-bottom: 8px; text-align: center; font-weight: 500; }
+        .loading-bar { height: 6px; background: #d0e8f7; border-radius: 10px; overflow: hidden; }
+        .loading-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #04629b, #3399cc); border-radius: 10px; transition: width 0.1s linear; }
 
-        .loading-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            color: #04629b;
-            margin-bottom: 8px;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .loading-bar {
-            height: 6px;
-            background: #d0e8f7;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .loading-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #04629b, #3399cc);
-            border-radius: 10px;
-            transition: width 0.1s linear;
-        }
-
-          
-        .result-section {
-            display: none;
-            margin-top: 30px;
-            animation: fadeIn 0.5s ease both;
-        }
-
+        /* ══ RESULT ══ */
+        .result-section { display: none; margin-top: 30px; animation: fadeIn 0.5s ease both; }
         .result-section.show { display: block; }
-
-        .result-card {
-            border-radius: 14px;
-            padding: 28px 24px;
-            display: flex;
-            align-items: flex-start;
-            gap: 18px;
-            border: 2px solid;
-        }
-
-        .result-card.normal {
-            background: #edfbf0;
-            border-color: #27ae60;
-        }
-
-        .result-card.elevated {
-            background: #fff8e1;
-            border-color: #f39c12;
-        }
-
-        .result-card.high {
-            background: #fdecea;
-            border-color: #c0392b;
-        }
-
-        .result-icon {
-            font-size: 2.4rem;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .result-card.normal  .result-icon { color: #27ae60; }
+        .result-card { border-radius: 14px; padding: 28px 24px; display: flex; align-items: flex-start; gap: 18px; border: 2px solid; }
+        .result-card.normal   { background: #edfbf0; border-color: #27ae60; }
+        .result-card.elevated { background: #fff8e1; border-color: #f39c12; }
+        .result-card.high     { background: #fdecea; border-color: #c0392b; }
+        .result-icon { font-size: 2.4rem; flex-shrink: 0; margin-top: 2px; }
+        .result-card.normal   .result-icon { color: #27ae60; }
         .result-card.elevated .result-icon { color: #f39c12; }
-        .result-card.high    .result-icon { color: #c0392b; }
-
-        .result-body h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .result-card.normal  .result-body h3 { color: #27ae60; }
+        .result-card.high     .result-icon { color: #c0392b; }
+        .result-body h3 { font-family: 'Oswald', sans-serif; font-size: 1.2rem; font-weight: 600; margin-bottom: 6px; }
+        .result-card.normal   .result-body h3 { color: #27ae60; }
         .result-card.elevated .result-body h3 { color: #f39c12; }
-        .result-card.high    .result-body h3 { color: #c0392b; }
+        .result-card.high     .result-body h3 { color: #c0392b; }
+        .result-body p { font-family: 'PT Serif', serif; font-size: 0.97rem; color: #444; line-height: 1.65; }
+        .bilirubin-value { display: inline-block; margin-top: 10px; font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: 1px; }
+        .bilirubin-unit { font-size: 1rem; font-weight: 400; opacity: 0.75; margin-left: 4px; }
 
-        .result-body p {
-            font-family: 'PT Serif', serif;
-            font-size: 0.97rem;
-            color: #444;
-            line-height: 1.65;
-            padding: 0;
-        }
+        /* ══ RESET ══ */
+        .reset-wrap { display: none; text-align: center; margin-top: 20px; }
+        .reset-wrap.show { display: block; }
+        .reset-btn { background: none; border: 2px solid #04629b; color: #04629b; font-family: 'Oswald', sans-serif; font-size: 0.95rem; padding: 8px 24px; border-radius: 6px; cursor: pointer; letter-spacing: 0.5px; transition: all 0.2s; }
+        .reset-btn:hover { background: #04629b; color: #fff; }
 
-        .bilirubin-value {
-            display: inline-block;
-            margin-top: 10px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .bilirubin-unit {
-            font-size: 1rem;
-            font-weight: 400;
-            opacity: 0.75;
-            margin-left: 4px;
-        }
-
-          
-        .reference-section {
-            margin-top: 32px;
-        }
-
-        .reference-section h4 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1rem;
-            color: #04629b;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        table.ref-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-        }
-
-        table.ref-table th {
-            background: #04629b;
-            color: #fff;
-            padding: 10px 14px;
-            text-align: left;
-            font-weight: 500;
-        }
-
-        table.ref-table td {
-            padding: 9px 14px;
-            border-bottom: 1px solid #e0e0e0;
-            color: #444;
-        }
-
+        /* ══ REFERENCE TABLE ══ */
+        .reference-section { margin-top: 32px; }
+        .reference-section h4 { font-family: 'Oswald', sans-serif; font-size: 1rem; color: #04629b; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+        table.ref-table { width: 100%; border-collapse: collapse; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; }
+        table.ref-table th { background: #04629b; color: #fff; padding: 10px 14px; text-align: left; font-weight: 500; }
+        table.ref-table td { padding: 9px 14px; border-bottom: 1px solid #e0e0e0; color: #444; }
         table.ref-table tr:nth-child(even) td { background: #f5f9fd; }
-
         table.ref-table tr:last-child td { border-bottom: none; }
 
-          
-        .disclaimer {
-            margin-top: 28px;
-            background: #f0f8ff;
-            border-left: 4px solid #04629b;
-            border-radius: 0 8px 8px 0;
-            padding: 14px 16px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            color: #555;
-            line-height: 1.6;
+        /* ══ DISCLAIMER ══ */
+        .disclaimer { margin-top: 28px; background: #f0f8ff; border-left: 4px solid #04629b; border-radius: 0 8px 8px 0; padding: 14px 16px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: #555; line-height: 1.6; }
+        .disclaimer strong { color: #04629b; font-weight: 600; }
+
+        /* ══ FOOTER ══ */
+        .footer { background: #111; color: #fff; padding: 44px 24px 20px; font-family: 'Montserrat', sans-serif; }
+        .footer-container { display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1200px; margin: 0 auto; gap: 24px; }
+        .footer-left, .footer-section { flex: 1 1 180px; }
+        .footer-logo { width:54px; height:44px; object-fit:contain; margin-right:8px; margin-bottom:12px; vertical-align:middle; }
+        .footer-description { font-size:13px; color:#ccc; margin-top:10px; line-height:1.6; }
+        .footer-section h3 { color:#fff; font-size:14px; margin-bottom:12px; font-family:'Oswald',sans-serif; }
+        .footer-section ul { list-style:none; padding:0; margin:0; }
+        .footer-section ul li { color:#ccc; font-size:13px; margin-bottom:7px; }
+        .footer-section ul li a { color:#ccc; text-decoration:none; transition:color 0.2s; }
+        .footer-section ul li a:hover { color:#fff; }
+        .footer-credit { color:#aaa; font-size:12px; margin-top:10px; }
+        .social-icons { display:flex; gap:14px; flex-wrap:wrap; }
+        .social-icons a { color:#ccc; font-size:18px; transition:color 0.2s; }
+        .social-icons a:hover { color:#fff; }
+        .footer-bottom { text-align:center; font-size:12px; color:#aaa; margin-top:28px; }
+        .footer-bottom hr { border:none; border-top:1px solid #333; margin-bottom:10px; }
+
+        /* ══ TABLET ══ */
+        @media (max-width:1100px) and (min-width:769px) {
+            .nav-link { font-size:14px; padding:8px 7px; }
+            .db-btn   { font-size:13px; padding:7px 12px; }
+            .logo img    { height:46px; }
+            .logoIMG img { height:42px; }
         }
 
-        .disclaimer strong {
-            color: #04629b;
-            font-weight: 600;
+        /* ══ MOBILE ≤768px ══ */
+        @media (max-width:768px) {
+            .navbar { height:60px; padding:0 14px; }
+            .logo img    { height:40px; }
+            .logoIMG img { height:36px; }
+            .nav-list { display:none !important; }
+            .db-btn   { display:none !important; }
+            .hamburger { display:flex !important; }
+
+            .predict-hero { margin-top:60px; padding:40px 16px 32px; }
+            .predict-hero h1 { font-size:1.4rem; }
+            .predict-hero p  { font-size:0.95rem; }
+
+            .predict-wrapper { padding:30px 14px 40px; }
+            .predict-card { padding:24px 16px; }
+            .upload-zone  { padding:32px 14px; }
+            #check-btn { padding:12px 28px; font-size:1rem; }
+
+            table.ref-table { font-size:0.72rem; }
+            table.ref-table th, table.ref-table td { padding:7px 8px; }
+
+            .footer-left, .footer-section { flex:1 1 100%; }
         }
 
-          
-        .reset-wrap {
-            display: none;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .reset-wrap.show { display: block; }
-
-        .reset-btn {
-            background: none;
-            border: 2px solid #04629b;
-            color: #04629b;
-            font-family: 'Oswald', sans-serif;
-            font-size: 0.95rem;
-            padding: 8px 24px;
-            border-radius: 6px;
-            cursor: pointer;
-            letter-spacing: 0.5px;
-            transition: all 0.2s;
-        }
-
-        .reset-btn:hover {
-            background: #04629b;
-            color: #fff;
-        }
-
-          
-        .footer {
-            background-color: #111;
-            color: #fff;
-            padding: 40px 20px 20px;
-            font-family: 'Montserrat', sans-serif;
-            margin-top: 0;
-            position: static !important;
-            height: auto !important;
-        }
-
-        .footer .footer-container {
-            position: static !important;
-            bottom: auto !important;
-            left: auto !important;
-            right: auto !important;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: auto;
-            gap: 20px;
-        }
-
-        .footer-left, .footer-section { flex: 1 1 200px; margin-bottom: 20px; }
-        .footer-logo { width: 60px; height: 50px; object-fit: contain; margin-right: 8px; margin-bottom: 15px; vertical-align: middle; }
-        .footer-description { font-size: 14px; color: #ccc; margin-top: 10px; line-height: 1.6; }
-        .footer-section h3 { color: #fff; margin-bottom: 12px; font-size: 15px; }
-        .footer-section ul { list-style: none; padding: 0; margin: 0; }
-        .footer-section ul li { color: #ccc; margin-bottom: 8px; font-size: 14px; }
-        .footer-section ul li a { color: #ccc; text-decoration: none; transition: color 0.2s; }
-        .footer-section ul li a:hover { color: #fff; }
-        .footer-credit { color: #aaa; font-size: 13px; margin-top: 10px; }
-        .social-icons a { margin-right: 14px; color: #ccc; font-size: 18px; transition: color 0.2s; }
-        .social-icons a:hover { color: #fff; }
-        .footer-bottom { text-align: center; font-size: 13px; color: #aaa; margin-top: 30px; }
-        .footer-bottom hr { border: none; border-top: 1px solid #333; margin-bottom: 12px; }
-
-          
-        .navbar {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            background-color: #fff;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 10px;
+        /* ══ SMALL MOBILE ≤480px ══ */
+        @media (max-width:480px) {
+            .predict-hero h1 { font-size:1.2rem; letter-spacing:1px; }
+            .predict-card { padding:18px 12px; }
+            .upload-zone h2 { font-size:1.1rem; }
+            table.ref-table { font-size:0.65rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <div class="container" id="container">
-        <div class="navbar">
-            <div class="logo">
-                <img src="ninja logo pt2.png" alt="NINJA Logo">
-            </div>
-            <div class="logoIMG">
-                <img src="logo img.jpg" alt="Logo">
-            </div>
-            <ul class="nav-list" id="navList">
-                <li class="nav-item"><a href="Untitled-1.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
-                <li class="nav-item"><a href="predict.html" class="nav-link" style="color:#04629b; font-weight:bold;">Predict</a></li>
-                <li class="nav-item"><a href="publications.html" class="nav-link">Publications</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
-                <li class="nav-item"><a href="ourteam.html" class="nav-link">Our Team</a></li>
-            </ul>
-            <button class="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
-                Our Database
-            </button>
-        </div>
+    <!-- ══ NAVBAR ══ -->
+    <nav class="navbar">
+        <div class="logo"><img src="ninja logo pt2.png" alt="NINJA Logo"></div>
+        <div class="logoIMG"><img src="logo img.jpg" alt="Logo"></div>
+
+        <ul class="nav-list">
+            <li><a href="Untitled-1.html" class="nav-link">Home</a></li>
+            <li><a href="aboutus.html" class="nav-link">About Us</a></li>
+            <li><a href="predict.html" class="nav-link active">Predict</a></li>
+            <li><a href="publications.html" class="nav-link">Publications</a></li>
+            <li><a href="#" class="nav-link">Products</a></li>
+            <li><a href="ourteam.html" class="nav-link">Our Team</a></li>
+        </ul>
+
+        <button class="db-btn"
+            onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
+            Our Database
+        </button>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- ══ MOBILE MENU ══ -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="Untitled-1.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="predict.html">Predict</a>
+        <a href="publications.html">Publications</a>
+        <a href="#">Products</a>
+        <a href="ourteam.html">Our Team</a>
+        <button class="db-btn-mobile"
+            onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
+            Our Database
+        </button>
     </div>
 
-    <!-- HERO -->
-    <div class="predict-hero" style="margin-top: 110px;">
+    <!-- ══ HERO ══ -->
+    <div class="predict-hero">
         <h1><i class="fas fa-microscope" style="margin-right:12px;"></i>PREDICT BILIRUBIN LEVEL</h1>
         <p>Upload a skin image of the newborn. Our AI model will analyse it and estimate the Total Serum Bilirubin (TSB) level non-invasively.</p>
     </div>
 
-    <!-- MAIN CONTENT -->
+    <!-- ══ MAIN CONTENT ══ -->
     <div class="predict-wrapper">
         <div class="predict-card">
 
-            <!-- UPLOAD ZONE -->
             <div class="upload-zone" id="uploadZone">
                 <input type="file" id="fileInput" accept="image/*">
                 <span class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></span>
@@ -499,7 +394,6 @@
                 <p style="margin-top:8px; font-size:0.78rem;">Supported formats: JPG, PNG, WEBP &nbsp;|&nbsp; Max size: 10 MB</p>
             </div>
 
-            <!-- IMAGE PREVIEW -->
             <div class="preview-section" id="previewSection">
                 <p class="preview-label"><i class="fas fa-image" style="margin-right:6px;"></i>Image Preview</p>
                 <img id="preview-img" src="" alt="Uploaded preview">
@@ -507,41 +401,34 @@
                 <span class="file-name-tag" id="fileNameTag"></span>
             </div>
 
-            <!-- CHECK BUTTON -->
             <div class="check-btn-wrap" id="checkBtnWrap">
                 <button id="check-btn" onclick="runAnalysis()">
                     <i class="fas fa-search-plus btn-icon"></i>Check Bilirubin Level
                 </button>
             </div>
 
-            <!-- LOADING BAR -->
             <div class="loading-bar-wrap" id="loadingBarWrap">
                 <p class="loading-text" id="loadingText">Analysing image…</p>
-                <div class="loading-bar">
-                    <div class="loading-fill" id="loadingFill"></div>
-                </div>
+                <div class="loading-bar"><div class="loading-fill" id="loadingFill"></div></div>
             </div>
 
-            <!-- RESULT -->
             <div class="result-section" id="resultSection">
                 <div class="result-card normal" id="resultCard">
                     <div class="result-icon" id="resultIcon"><i class="fas fa-check-circle"></i></div>
                     <div class="result-body">
                         <h3 id="resultTitle">Normal Bilirubin Level</h3>
-                        <p id="resultDesc">The estimated bilirubin level falls within the normal range for a newborn. No immediate intervention is required. Continue routine monitoring as advised by your neonatologist.</p>
+                        <p id="resultDesc">The estimated bilirubin level falls within the normal range for a newborn.</p>
                         <div class="bilirubin-value" id="bilirubinValue">—<span class="bilirubin-unit">mg/dL</span></div>
                     </div>
                 </div>
             </div>
 
-            <!-- RESET BUTTON -->
             <div class="reset-wrap" id="resetWrap">
                 <button class="reset-btn" onclick="resetPage()">
                     <i class="fas fa-redo" style="margin-right:6px;"></i>Upload Another Image
                 </button>
             </div>
 
-            <!-- REFERENCE TABLE -->
             <div class="reference-section">
                 <h4><i class="fas fa-table" style="margin-right:6px;"></i>Reference Bilirubin Ranges (Term Newborns)</h4>
                 <table class="ref-table">
@@ -562,22 +449,21 @@
                 </table>
             </div>
 
-            <!-- DISCLAIMER -->
             <div class="disclaimer">
-                <strong>⚠ Disclaimer:</strong> This tool provides an AI-based estimation only and is <strong>not a substitute for clinical diagnosis</strong>. Always consult a qualified neonatologist or healthcare professional before making any medical decisions. Predictions are based on deep learning models trained on image data and may vary with lighting, skin tone, and image quality.
+                <strong>⚠ Disclaimer:</strong> This tool provides an AI-based estimation only and is <strong>not a substitute for clinical diagnosis</strong>. Always consult a qualified neonatologist or healthcare professional before making any medical decisions.
             </div>
 
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- ══ FOOTER ══ -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-left">
                 <a href="https://www.icmr.gov.in/" target="_blank"><img src="icmr.jpeg" alt="ICMR" class="footer-logo"></a>
                 <a href="https://uiet.puchd.ac.in/" target="_blank"><img src="uiet.jpeg" alt="UIET" class="footer-logo"></a>
-                <a href="https://gmch.gov.in/" target="_blank"><img src="gmch.png" alt="GMCH" class="footer-logo"></a>
-                <a href="https://mcmdavcwchd.edu.in/" target="_blank"><img src="mcm.jpeg" alt="MCM" class="footer-logo"></a>
+                <a href="https://gmch.gov.in/" target="_blank"><img src="gmch.png"  alt="GMCH" class="footer-logo"></a>
+                <a href="https://mcmdavcwchd.edu.in/" target="_blank"><img src="mcm.jpeg" alt="MCM"  class="footer-logo"></a>
                 <p class="footer-description">NINJA is an AI-powered research project for non-invasive jaundice assessment in newborns using deep learning.</p>
             </div>
             <div class="footer-section">
@@ -615,44 +501,66 @@
     </footer>
 
     <script>
-        const fileInput     = document.getElementById('fileInput');
-        const uploadZone    = document.getElementById('uploadZone');
-        const previewSection= document.getElementById('previewSection');
-        const previewImg    = document.getElementById('preview-img');
-        const fileNameTag   = document.getElementById('fileNameTag');
-        const checkBtnWrap  = document.getElementById('checkBtnWrap');
-        const loadingBarWrap= document.getElementById('loadingBarWrap');
-        const loadingFill   = document.getElementById('loadingFill');
-        const loadingText   = document.getElementById('loadingText');
-        const resultSection = document.getElementById('resultSection');
-        const resultCard    = document.getElementById('resultCard');
-        const resultIcon    = document.getElementById('resultIcon');
-        const resultTitle   = document.getElementById('resultTitle');
-        const resultDesc    = document.getElementById('resultDesc');
-        const bilirubinValue= document.getElementById('bilirubinValue');
-        const resetWrap     = document.getElementById('resetWrap');
+        /* ══ Hamburger ══ */
+        var hamburger  = document.getElementById('hamburger');
+        var mobileMenu = document.getElementById('mobileMenu');
 
-          
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var isOpen = mobileMenu.classList.toggle('open');
+            hamburger.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', String(isOpen));
+        });
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('open');
+                hamburger.classList.remove('open');
+            });
+        });
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('open');
+                hamburger.classList.remove('open');
+            }
+        });
+
+        /* ══ Upload logic ══ */
+        var fileInput      = document.getElementById('fileInput');
+        var uploadZone     = document.getElementById('uploadZone');
+        var previewSection = document.getElementById('previewSection');
+        var previewImg     = document.getElementById('preview-img');
+        var fileNameTag    = document.getElementById('fileNameTag');
+        var checkBtnWrap   = document.getElementById('checkBtnWrap');
+        var loadingBarWrap = document.getElementById('loadingBarWrap');
+        var loadingFill    = document.getElementById('loadingFill');
+        var loadingText    = document.getElementById('loadingText');
+        var resultSection  = document.getElementById('resultSection');
+        var resultCard     = document.getElementById('resultCard');
+        var resultIcon     = document.getElementById('resultIcon');
+        var resultTitle    = document.getElementById('resultTitle');
+        var resultDesc     = document.getElementById('resultDesc');
+        var bilirubinValue = document.getElementById('bilirubinValue');
+        var resetWrap      = document.getElementById('resetWrap');
+
         fileInput.addEventListener('change', handleFile);
 
-          
-        uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragover'); });
-        uploadZone.addEventListener('dragleave', ()  => uploadZone.classList.remove('dragover'));
-        uploadZone.addEventListener('drop', e => {
+        uploadZone.addEventListener('dragover', function(e) { e.preventDefault(); uploadZone.classList.add('dragover'); });
+        uploadZone.addEventListener('dragleave', function() { uploadZone.classList.remove('dragover'); });
+        uploadZone.addEventListener('drop', function(e) {
             e.preventDefault();
             uploadZone.classList.remove('dragover');
-            const file = e.dataTransfer.files[0];
+            var file = e.dataTransfer.files[0];
             if (file && file.type.startsWith('image/')) showPreview(file);
         });
 
         function handleFile() {
-            const file = fileInput.files[0];
+            var file = fileInput.files[0];
             if (file) showPreview(file);
         }
 
         function showPreview(file) {
-            const reader = new FileReader();
-            reader.onload = e => {
+            var reader = new FileReader();
+            reader.onload = function(e) {
                 previewImg.src = e.target.result;
                 previewSection.classList.add('show');
                 checkBtnWrap.classList.add('show');
@@ -664,26 +572,19 @@
             reader.readAsDataURL(file);
         }
 
-          
         function runAnalysis() {
             checkBtnWrap.classList.remove('show');
             loadingBarWrap.classList.add('show');
-
-            const steps = [
+            var steps = [
                 { pct: 20,  text: 'Preprocessing image…' },
                 { pct: 45,  text: 'Extracting skin region…' },
                 { pct: 70,  text: 'Running deep learning model…' },
                 { pct: 90,  text: 'Calculating bilirubin estimate…' },
                 { pct: 100, text: 'Complete!' },
             ];
-
-            let i = 0;
-            const interval = setInterval(() => {
-                if (i >= steps.length) {
-                    clearInterval(interval);
-                    setTimeout(showResult, 400);
-                    return;
-                }
+            var i = 0;
+            var interval = setInterval(function() {
+                if (i >= steps.length) { clearInterval(interval); setTimeout(showResult, 400); return; }
                 loadingFill.style.width = steps[i].pct + '%';
                 loadingText.textContent = steps[i].text;
                 i++;
@@ -692,38 +593,29 @@
 
         function showResult() {
             loadingBarWrap.classList.remove('show');
-
-           
-            const value = 8.4; 
-
-            let level, cardClass, iconHTML, title, desc;
-
+            var value = 8.4; /* ← replace with model output */
+            var cardClass, iconHTML, title, desc;
             if (value < 12) {
-                level = 'normal';
                 cardClass = 'result-card normal';
                 iconHTML  = '<i class="fas fa-check-circle"></i>';
                 title = 'Normal Bilirubin Level';
                 desc  = 'The estimated bilirubin level falls within the normal range for a newborn. No immediate intervention is required. Continue routine monitoring as advised by your neonatologist.';
             } else if (value < 18) {
-                level = 'elevated';
                 cardClass = 'result-card elevated';
                 iconHTML  = '<i class="fas fa-exclamation-triangle"></i>';
                 title = 'Elevated — Phototherapy Advised';
                 desc  = 'The estimated bilirubin level is above the normal threshold. Phototherapy may be recommended. Please consult your neonatologist immediately for clinical confirmation.';
             } else {
-                level = 'high';
                 cardClass = 'result-card high';
                 iconHTML  = '<i class="fas fa-radiation-alt"></i>';
                 title = 'High — Urgent Attention Required';
                 desc  = 'The estimated bilirubin level is critically high. Exchange transfusion may be necessary. Please seek emergency neonatal care immediately.';
             }
-
             resultCard.className = cardClass;
             resultIcon.innerHTML = iconHTML;
             resultTitle.textContent = title;
             resultDesc.textContent  = desc;
             bilirubinValue.innerHTML = value.toFixed(1) + '<span class="bilirubin-unit"> mg/dL</span>';
-
             resultSection.classList.add('show');
             resetWrap.classList.add('show');
         }
