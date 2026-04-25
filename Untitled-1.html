@@ -1,231 +1,410 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <title>NINJA</title>
-    <link href="ninja pt 2.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js">
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <script src="ninja.js" type="text/javascript"></script>
+    <script src="ninja.js" defer></script>
 
     <style>
-          
-        .newcontainer {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+        /* ══ RESET ══ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #fff;
         }
 
-        .newcontainer.show {
-            opacity: 1;
-            transform: translateY(0);
+        /* ══ NAVBAR — always a single row on desktop ══ */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            z-index: 2000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 0 20px;
+            height: 70px;
+            gap: 8px;
         }
-        
-        /* ── Tablet ≤ 1023px ── */
-        @media (max-width: 1023px) {
-            .nav-list { gap: 2px; margin-left: 8px; }
-            .nav-item  { font-size: 15px; }
-            .db-btn    { font-size: 14px; padding: 7px 14px; }
+        .logo img    { height: 54px; width: auto; display: block; }
+        .logoIMG img { height: 48px; width: auto; display: block; }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 2px;
+            margin: 0 0 0 10px;
+            padding: 0;
+            font-family: 'Oswald', sans-serif;
         }
- 
-        /* ── Mobile ≤ 768px ── */
-        @media (max-width: 768px) {
- 
-            /* Navbar switches to collapsible */
-            .navbar {
-                flex-wrap: wrap;
-                height: auto;
-                padding: 10px 16px;
-                gap: 0;
-            }
- 
-            .navbar .logo    { flex-shrink: 0; }
-            .navbar .logoIMG { flex-shrink: 0; margin-left: 8px; }
- 
-            .navbar .logo img   { height: 44px; }
-            .navbar .logoIMG img { height: 40px; }
- 
-            /* Hamburger visible */
-            .hamburger { display: flex; margin-left: auto; }
- 
-            /* Database button beside hamburger */
-            .db-btn {
-                font-size: 12px;
-                padding: 6px 10px;
-                margin-left: 10px;
-                order: 3;
-            }
- 
-            /* Nav list hidden by default */
-            .nav-list {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background: #fff;
-                border-top: 1px solid #e0e0e0;
-                padding: 8px 0 12px;
-                margin: 8px 0 0 0;
-                order: 4;           /* appears below logo row */
-                gap: 0;
-            }
- 
-            .nav-list.open {
-                display: flex;
-                animation: slideDown 0.25s ease;
-            }
- 
-            @keyframes slideDown {
-                from { opacity: 0; transform: translateY(-8px); }
-                to   { opacity: 1; transform: translateY(0); }
-            }
- 
-            .nav-item { width: 100%; font-size: 16px; }
- 
-            .nav-link {
-                padding: 12px 20px;
-                border-bottom: 1px solid #f0f0f0;
-                border-radius: 0;
-            }
- 
-            .nav-link:hover { background: #f0f8ff; }
- 
-            /* Hero */
-            .newcontainer { margin-top: 64px; }
-            .newcontainer img { height: 40vh; }
- 
-            /* Info section */
-            .container3 { padding: 36px 20px 30px; }
-            .container3 > p { font-size: 15px; }
- 
-            /* Counters */
-            .wrapper { gap: 16px; }
-            .container4 { width: 44vw; max-width: 200px; }
-            span.num { font-size: 2em; }
- 
-            /* Slider */
-            .containers { height: 42vh; }
-            .slider { height: 42vh; }
-            .slider [class*="box"] { width: 28vh; height: 40vh; }
-            .slider [class*="box"]:nth-child(4) { width: 30vh; height: 44vh; }
-            .slider [class*="box"]:nth-child(1) { left: -18%; }
-            .slider [class*="box"]:nth-child(7) { left: 105%; }
- 
-            /* Footer */
-            .footer-left,
-            .footer-section { flex: 1 1 100%; }
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            padding: 8px 10px;
+            display: block;
+            font-size: 16px;
+            white-space: nowrap;
+            transition: color 0.2s;
+            border-radius: 4px;
         }
- 
-        /* ── Small Mobile ≤ 480px ── */
-        @media (max-width: 480px) {
-            .navbar .logo img    { height: 36px; }
-            .navbar .logoIMG img { height: 32px; }
-            .db-btn { display: none; } /* hide to save space; accessible from nav */
- 
-            .newcontainer img { height: 30vh; }
- 
-            .container3 { padding: 28px 14px 24px; }
-            .container3 > p { font-size: 14px; }
- 
-            .wrapper { flex-direction: column; align-items: center; }
-            .container4 { width: 88vw; max-width: 320px; }
- 
-            /* Slider: show only centre 3 */
+        .nav-link:hover, .nav-link.active { color: #04629b; font-weight: 700; }
+
+        .db-btn {
+            margin-left: auto;
+            background: #fff;
+            color: #333;
+            border: 2px solid #333;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 15px;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: background 0.25s, color 0.25s, border-color 0.25s;
+        }
+        .db-btn:hover { background: #04629b; color: #fff; border-color: #04629b; }
+
+        /* Hamburger — hidden on desktop */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 7px 8px;
+            background: none;
+            border: 2px solid #333;
+            border-radius: 5px;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px; height: 2px;
+            background: #333;
+            border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* Mobile dropdown — always hidden until JS adds .open */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px; left: 0; width: 100%;
+            background: #fff;
+            border-top: 3px solid #04629b;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            z-index: 1999;
+            flex-direction: column;
+        }
+        .mobile-menu.open {
+            display: flex;
+            animation: slideDown 0.22s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .mobile-menu a {
+            text-decoration: none;
+            color: #333;
+            font-family: 'Oswald', sans-serif;
+            font-size: 17px;
+            padding: 14px 24px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.15s, color 0.15s;
+        }
+        .mobile-menu a:hover { background: #f0f8ff; color: #04629b; }
+        .db-btn-mobile {
+            margin: 14px 24px 18px;
+            background: #04629b;
+            color: #fff;
+            border: none;
+            padding: 12px 0;
+            border-radius: 6px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .db-btn-mobile:hover { background: #023f66; }
+
+        /* ══ HERO IMAGE ══ */
+        .newcontainer {
+            margin-top: 70px;
+            width: 100%;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+        }
+        .newcontainer.show { opacity: 1; transform: translateY(0); }
+        .newcontainer img {
+            width: 100%; height: 70vh;
+            object-fit: cover; object-position: center;
+            display: block;
+        }
+
+        /* ══ INFO + COUNTERS ══ */
+        .container3 {
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 56px 40px 36px;
+        }
+        .container3 h1 {
+            color: #04629b;
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1.2rem, 2.5vw, 2rem);
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        .container3 > p {
+            font-family: 'PT Serif', serif;
+            font-size: clamp(14px, 1.5vw, 18px);
+            text-align: justify;
+            color: #222;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin: 0 auto 40px;
+        }
+        .container4 {
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px 0;
+            border-radius: 10px;
+            border-bottom: 8px solid #04629b;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(4,98,155,0.10);
+            gap: 8px;
+        }
+        .container4 img { height: 60px; width: 60px; object-fit: cover; border-radius: 6px; }
+        span.num { font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:2.4em; color:#04629b; display:block; text-align:center; }
+        span.text { font-family:'Oswald',sans-serif; font-size:1em; color:#555; text-align:center; display:block; }
+
+        /* ══ SLIDER ══ */
+        .containers {
+            width: 100%; height: 40vh;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden; background: #f0f4f8;
+        }
+        .slider {
+            height: 40vh; width: 100vw;
+            display: flex; perspective: 1000px;
+            position: relative; align-items: center;
+        }
+        .box1{background:url('img 1.png') center/cover no-repeat;}
+        .box2{background:url('img 2.png') center/cover no-repeat;}
+        .box3{background:url('img 3.png') center/cover no-repeat;}
+        .box4{background:url('img 4.png') center/cover no-repeat;}
+        .box5{background:url('5.png') center/cover no-repeat;}
+        .box6{background:url('6.png') center/cover no-repeat;}
+        .box7{background:url('7.png') center/cover no-repeat;}
+        .slider [class*="box"] {
+            overflow:hidden; border-radius:14px;
+            transition:all 1s cubic-bezier(0.68,-0.6,0.32,1.6);
+            position:absolute;
+        }
+        .slider [class*="box"]:nth-child(7),
+        .slider [class*="box"]:nth-child(1){width:26vh;height:36vh;transform:scale(0.2) translate(-50%,-50%);top:10%;z-index:1;}
+        .slider [class*="box"]:nth-child(2),
+        .slider [class*="box"]:nth-child(6){width:26vh;height:36vh;transform:scale(0.4) translate(-50%,-50%);top:20%;z-index:2;}
+        .slider [class*="box"]:nth-child(3),
+        .slider [class*="box"]:nth-child(5){width:26vh;height:36vh;transform:scale(0.6) translate(-50%,-50%);top:30%;z-index:3;}
+        .slider [class*="box"]:nth-child(4){width:26vh;height:36vh;transform:scale(1) translate(-50%,-50%);top:50%;z-index:4;}
+        .slider [class*="box"]:nth-child(1){left:-13%;}
+        .slider [class*="box"]:nth-child(2){left:-5%;}
+        .slider [class*="box"]:nth-child(3){left:10%;}
+        .slider [class*="box"]:nth-child(4){left:50%;}
+        .slider [class*="box"]:nth-child(5){left:71%;}
+        .slider [class*="box"]:nth-child(6){left:85%;}
+        .slider [class*="box"]:nth-child(7){left:100%;}
+        .slider .firstSlide{animation:firstChild 1s;}
+        @keyframes firstChild{
+            0%{left:100%;transform:scale(0.2) translate(-50%,-50%);}
+            100%{left:-13%;transform:scale(0.2) translate(-50%,-50%);}
+        }
+
+        /* ══ FOOTER ══ */
+        .footer {
+            background:#111; color:#fff;
+            padding:44px 24px 20px;
+            font-family:'Montserrat',sans-serif;
+            margin-top:auto;
+        }
+        .footer-container {
+            display:flex; flex-wrap:wrap;
+            justify-content:space-between;
+            max-width:1200px; margin:0 auto; gap:24px;
+        }
+        .footer-left,.footer-section{flex:1 1 180px;}
+        .footer-logo{width:54px;height:44px;object-fit:contain;margin-right:8px;margin-bottom:12px;vertical-align:middle;}
+        .footer-description{font-size:13px;color:#ccc;margin-top:10px;line-height:1.6;}
+        .footer-section h3{color:#fff;font-size:14px;letter-spacing:0.5px;margin-bottom:12px;font-family:'Oswald',sans-serif;}
+        .footer-section ul{list-style:none;padding:0;margin:0;}
+        .footer-section ul li{color:#ccc;font-size:13px;margin-bottom:7px;}
+        .footer-section ul li a{color:#ccc;text-decoration:none;transition:color 0.2s;}
+        .footer-section ul li a:hover{color:#fff;}
+        .footer-credit{color:#aaa;font-size:12px;margin-top:10px;}
+        .social-icons{display:flex;gap:14px;flex-wrap:wrap;}
+        .social-icons a{color:#ccc;font-size:18px;transition:color 0.2s;}
+        .social-icons a:hover{color:#fff;}
+        .footer-bottom{text-align:center;font-size:12px;color:#aaa;margin-top:28px;}
+        .footer-bottom hr{border:none;border-top:1px solid #333;margin-bottom:10px;}
+
+        /* ══ TABLET 769–1100px ══ */
+        @media (max-width:1100px) and (min-width:769px) {
+            .nav-link{font-size:14px;padding:8px 7px;}
+            .db-btn{font-size:13px;padding:7px 12px;}
+            .logo img{height:46px;}
+            .logoIMG img{height:42px;}
+        }
+
+        /* ══ MOBILE ≤768px ══ */
+        @media (max-width:768px) {
+            /* Navbar */
+            .navbar { height:60px; padding:0 14px; }
+            .logo img    { height:40px; }
+            .logoIMG img { height:36px; }
+
+            /* Hide desktop elements */
+            .nav-list { display:none !important; }
+            .db-btn   { display:none !important; }
+
+            /* Show hamburger */
+            .hamburger { display:flex !important; }
+
+            /* Hide hero on mobile */
+            .newcontainer { display:none !important; }
+
+            /* Content padding */
+            .container3 { padding:80px 18px 30px; }
+            .container3 > p { font-size:14px; }
+            .wrapper { gap:14px; }
+            .container4 { width:44vw; max-width:180px; }
+            span.num { font-size:1.8em; }
+
+            /* Smaller slider */
+            .containers { height:30vh; }
+            .slider     { height:30vh; }
+            .slider [class*="box"] { width:20vh; height:28vh; }
             .slider [class*="box"]:nth-child(1),
+            .slider [class*="box"]:nth-child(7) { display:none; }
+
+            .footer-left,
+            .footer-section { flex:1 1 100%; }
+        }
+
+        /* ══ SMALL MOBILE ≤480px ══ */
+        @media (max-width:480px) {
+            .wrapper { flex-direction:column; align-items:center; }
+            .container4 { width:85vw; max-width:300px; }
             .slider [class*="box"]:nth-child(2),
-            .slider [class*="box"]:nth-child(6),
-            .slider [class*="box"]:nth-child(7) { display: none; }
-            .slider [class*="box"]:nth-child(3) { left: 5%;  transform: scale(0.6) translate(-50%,-50%); }
-            .slider [class*="box"]:nth-child(5) { left: 78%; transform: scale(0.6) translate(-50%,-50%); }
-            .slider [class*="box"]:nth-child(4) { width: 34vh; height: 48vh; }
- 
-            .footer { padding: 30px 14px 16px; }
-            .footer-section h3 { font-size: 13px; }
+            .slider [class*="box"]:nth-child(6) { display:none; }
+            .slider [class*="box"]:nth-child(3) { left:5%; transform:scale(0.7) translate(-50%,-50%); }
+            .slider [class*="box"]:nth-child(5) { left:75%; transform:scale(0.7) translate(-50%,-50%); }
         }
     </style>
 </head>
 
 <body>
-    <div class="container" id="container">
-        <div class="navbar">
-            <div class="logo">
-                <img src="ninja logo pt2.png" alt="Logo">
-            </div>
-            <div class="logoIMG">
-                <img src="logo img.JPG" alt="Logo">
-            </div>
 
-            <ul class="nav-list" id="navList">
-                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
-                <li class="nav-item"><a href="predict.html" class="nav-link">Predict</a></li>
-                <li class="nav-item"><a href="publications.html" class="nav-link">Publications</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
-                <li class="nav-item"><a href="ourteam.html" class="nav-link">Our Team</a></li>
-            </ul>
+    <!-- ══ NAVBAR ══ -->
+    <nav class="navbar">
+        <div class="logo"><img src="ninja logo pt2.png" alt="NINJA Logo"></div>
+        <div class="logoIMG"><img src="logo img.JPG" alt="Logo"></div>
 
-            <button class="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
-                Our Database
-            </button>
-        </div>
+        <ul class="nav-list">
+            <li><a href="#" class="nav-link active">Home</a></li>
+            <li><a href="aboutus.html" class="nav-link">About Us</a></li>
+            <li><a href="predict.html" class="nav-link">Predict</a></li>
+            <li><a href="publications.html" class="nav-link">Publications</a></li>
+            <li><a href="#" class="nav-link">Products</a></li>
+            <li><a href="ourteam.html" class="nav-link">Our Team</a></li>
+        </ul>
+
+        <button class="db-btn"
+            onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
+            Our Database
+        </button>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- ══ MOBILE MENU ══ -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="predict.html">Predict</a>
+        <a href="publications.html">Publications</a>
+        <a href="#">Products</a>
+        <a href="ourteam.html">Our Team</a>
+        <button class="db-btn-mobile"
+            onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgyVrN0tHxmxF7HkbWePC-Vv4dKUhDsOUIhdg36EhkLH2B7A/viewform?usp=dialog_blank')">
+            Our Database
+        </button>
     </div>
 
-    <script>
-        const menuButton = document.querySelector('.menu-button');
-        const navList = document.getElementById('navList');
-
-            if (menuButton) {
-            menuButton.addEventListener('click', function () {
-                navList.classList.toggle('show');
-            });
-        }
-
-        window.addEventListener("load", () => {
-            document.querySelector(".newcontainer").classList.add("show");
-        });
-    </script>
-
-    <div class="newcontainer">
-        <img src="adj photo.jpg" style="width: 100%; top: 30%; padding-top: 10%; height: 70vh;">
+    <!-- ══ HERO (desktop only) ══ -->
+    <div class="newcontainer" id="newcontainer">
+        <img src="adj photo.jpg" alt="NINJA Hero">
     </div>
 
+    <!-- ══ INFO + COUNTERS ══ -->
     <div class="container3" id="container3">
-        <h1 style="text-align: center;">NINJA: NON INVASIVE NEONATE JAUNDICE ESTIMATION</h1>
+        <h1>NINJA: NON INVASIVE NEONATE JAUNDICE ESTIMATION</h1>
         <p>NINJA (Non-invasive Neonate Jaundice Assessment) is an AI-powered research initiative aimed at developing a safe, contactless method for estimating bilirubin levels in newborns using skin images. Traditional methods for jaundice detection often require invasive blood tests, which can be stressful for both infants and caregivers. NINJA leverages deep learning techniques to analyze visual cues from skin images and predict Total Serum Bilirubin (TSB) levels accurately. By integrating advanced AI with accessible imaging, the project aspires to support early diagnosis and reduce the dependence on invasive procedures, especially in resource-limited settings.</p>
-        
         <div class="wrapper">
             <div class="container4">
-                <img src="face clr.jpg">
+                <img src="face clr.jpg" alt="Face">
                 <span class="num" data-val="2000">0000</span>
                 <span class="text">Face</span>
             </div>
-
             <div class="container4">
-                <img src="strnum clr.jpg">
+                <img src="strnum clr.jpg" alt="Sternum">
                 <span class="num" data-val="2000">0000</span>
                 <span class="text">Sternum</span>
             </div>
-
             <div class="container4">
-                <img src="lgo cpy clr.jpg">
+                <img src="lgo cpy clr.jpg" alt="Full body">
                 <span class="num" data-val="2000">0000</span>
                 <span class="text">Full body</span>
             </div>
         </div>
-        <h1 style="text-align: center;">A GLIMPSE OF OUR DATASET</h1>
+        <h1>A GLIMPSE OF OUR DATASET</h1>
     </div>
 
     <script src="js.js"></script>
 
+    <!-- ══ SLIDER ══ -->
     <div class="containers">
         <div class="slider">
             <div class="box1"></div>
@@ -238,42 +417,22 @@
         </div>
     </div>
 
-    <div id="test"></div>
-
-    <!-- Js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script>
-        function rotate() {
-            var lastChild = $('.slider div:last-child').clone();
-            $('.slider div').removeClass('firstSlide')
-            $('.slider div:last-child').remove();
-            $('.slider').prepend(lastChild)
-            $(lastChild).addClass('firstSlide')
-        }
-
-        window.setInterval(function () {
-            rotate()
-        }, 4000);
-    </script>
-
+    <!-- ══ FOOTER ══ -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-left">
-                <a href="https://www.icmr.gov.in/" target="_blank"><img src="icmr.jpeg" alt="NINJA Logo" class="footer-logo"></a>
-                <a href="https://uiet.puchd.ac.in/" target="_blank"><img src="uiet.jpeg" alt="NINJA Logo" class="footer-logo"></a>
-                <a href="https://gmch.gov.in/" target="_blank"><img src="gmch.png" alt="NINJA Logo" class="footer-logo"></a>
-                <a href="https://mcmdavcwchd.edu.in/" target="_blank"><img src="mcm.jpeg" alt="NINJA Logo" class="footer-logo"></a>
-
-                <p class="footer-description">
-                    NINJA is an AI-powered research project for non-invasive jaundice assessment in newborns using deep learning.
-                </p>
+                <a href="https://www.icmr.gov.in/" target="_blank"><img src="icmr.jpeg" alt="ICMR" class="footer-logo"></a>
+                <a href="https://uiet.puchd.ac.in/" target="_blank"><img src="uiet.jpeg" alt="UIET" class="footer-logo"></a>
+                <a href="https://gmch.gov.in/" target="_blank"><img src="gmch.png"  alt="GMCH" class="footer-logo"></a>
+                <a href="https://mcmdavcwchd.edu.in/" target="_blank"><img src="mcm.jpeg"  alt="MCM"  class="footer-logo"></a>
+                <p class="footer-description">NINJA is an AI-powered research project for non-invasive jaundice assessment in newborns using deep learning.</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#container6">Predict</a></li>
-                    <li><a href="#">Publications</a></li>
+                    <li><a href="predict.html">Predict</a></li>
+                    <li><a href="publications.html">Publications</a></li>
                     <li><a href="#">Products</a></li>
                 </ul>
             </div>
@@ -283,8 +442,8 @@
                     <li>Email: contact@ninja.org</li>
                     <li>Phone: +91 000000000</li>
                     <li>India</li>
-                    Created by Ashmeet Kaur
                 </ul>
+                <p class="footer-credit">Created by Ashmeet Kaur</p>
             </div>
             <div class="footer-section">
                 <h3>Follow Us</h3>
@@ -297,10 +456,53 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <hr />
+            <hr>
             <p>© 2025 NINJA. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        /* ══ Hamburger ══ */
+        var hamburger  = document.getElementById('hamburger');
+        var mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var isOpen = mobileMenu.classList.toggle('open');
+            hamburger.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('open');
+                hamburger.classList.remove('open');
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('open');
+                hamburger.classList.remove('open');
+            }
+        });
+
+        /* ══ Hero fade-in ══ */
+        window.addEventListener('load', function() {
+            var nc = document.getElementById('newcontainer');
+            if (nc) nc.classList.add('show');
+        });
+
+        /* ══ Slider ══ */
+        function rotate() {
+            var lastChild = $('.slider div:last-child').clone();
+            $('.slider div').removeClass('firstSlide');
+            $('.slider div:last-child').remove();
+            $('.slider').prepend(lastChild);
+            $(lastChild).addClass('firstSlide');
+        }
+        setInterval(rotate, 4000);
+    </script>
 </body>
 </html>
-
